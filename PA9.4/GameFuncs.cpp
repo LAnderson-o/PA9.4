@@ -28,13 +28,17 @@ void Game::update() {
             break;
         }
     }
+
     
 }
 
 void Game::render() {
-    window->clear(sf::Color::Magenta);
+    window->clear(sf::Color(0, 102, 0, 0));
     
     //draw here
+    for (int i = 0; i < 3; i++) { // this for loop isnt working or someething to do with roads
+        window->draw(roads[i]);
+    }
     window->draw(player);
     
     window->display();
@@ -56,6 +60,16 @@ void Game::initalizePlayer() {
     player.setFillColor(sf::Color::White);
     player.setOutlineColor(sf::Color::Black);
     player.setOutlineThickness(1.f);
+}
+
+void Game::initalizeBackground() {
+    //roads
+    for (int i = 0; i < 3; i++) {
+        roads[i].setFillColor(sf::Color(64, 64, 64, 0));
+        int tempwidth = window->getSize().x;
+        roads[i].setSize(sf::Vector2f(tempwidth, 60));
+        roads[i].setPosition(0, ((window->getSize().y/3)*i+1)-60);
+    }
 }
 
 void Game::initalizeVars() {

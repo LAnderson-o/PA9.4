@@ -16,12 +16,14 @@ public:
 	void run();
 
 	sf::RectangleShape player;
+	sf::RectangleShape roads[3];
 
 private:
 	sf::RenderWindow* window;
 	sf::Event event;
 
 	void initalizePlayer();
+	void initalizeBackground();
 	void initalizeVars();
 	void initalizeWindow();
 };
