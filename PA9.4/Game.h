@@ -15,10 +15,13 @@ public:
 	void render();
 	void run();
 
+	sf::RectangleShape player;
+
 private:
 	sf::RenderWindow* window;
 	sf::Event event;
 
+	void initalizePlayer();
 	void initalizeVars();
 	void initalizeWindow();
 };
