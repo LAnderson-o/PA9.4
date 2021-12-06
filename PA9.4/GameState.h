@@ -26,7 +26,7 @@ private:
     void initalizeTextures();
     
     sf::RenderWindow* window;
-    sf::Texture newTexture;
+    sf::Texture playerTexture[3];
     sf::Texture backgroundTexture;
     sf::FloatRect bounds;
 

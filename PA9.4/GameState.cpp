@@ -20,7 +20,6 @@ GameState::~GameState()
 
 void GameState::update()
 {
-
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		
@@ -57,7 +56,6 @@ void GameState::render()
 	window->clear();
 
 	window->draw(background);
-
 	window->draw(player);
 
 	window->display();
@@ -70,19 +68,15 @@ void GameState::initalizeBackground() {
 
 
 void GameState::initalizeTextures() {
-    newTexture.loadFromFile("frog1transparent.png");
+    playerTexture[0].loadFromFile("frog1transparent.png");
+	playerTexture[1].loadFromFile("frog2transparent.png");
+	playerTexture[2].loadFromFile("frog3transparent.png");
 	backgroundTexture.loadFromFile("Background.png");
 }
 
 
 void GameState::initalizePlayer() {
-    //position
     player.setPosition(400, 100);
-    player.setTexture(newTexture);
+    player.setTexture(playerTexture[0]);
     player.setScale(sf::Vector2f(2.f, 2.f));
-    //looks
-    /*player.setSize(sf::Vector2f(50.f, 50.f));
-    player.setFillColor(sf::Color::White);
-    player.setOutlineColor(sf::Color::Black);
-    player.setOutlineThickness(1.f);*/
 }
