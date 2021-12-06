@@ -3,6 +3,7 @@
 Game::Game() {
 	initalizeVars();
 	initalizeWindow();
+    initalizeTextures();
     initalizePlayer();
 }
 
@@ -21,9 +22,18 @@ void Game::update() {
             if (event.key.code == sf::Keyboard::Escape) {
                 window->close();
             } else if(event.key.code == sf::Keyboard::A) {
-                player.move(-5, 0);
-            } else if (event.key.code == sf::Keyboard::D) {
-                player.move(5, 0);
+                //std::cout << player.getPosition().x << std::endl;
+                if(player.getPosition().x > 0){
+                    player.move(-5, 0);
+                }
+            }
+            else if (event.key.code == sf::Keyboard::D) {
+                //std::cout << player.getPosition().x << std::endl;
+                if (player.getPosition().x < window->getSize().x - newTexture.getSize().x * 2) {
+                    player.move(5, 0);
+                }
+            } else if (event.key.code == sf::Keyboard::Space) {
+                //player.shoot
             }
             break;
         }
@@ -54,12 +64,13 @@ void Game::run() {
 void Game::initalizePlayer() {
     //position
     player.setPosition(window->getSize().x/2, window->getSize().y-50);
-
+    player.setTexture(newTexture);
+    player.setScale(sf::Vector2f(2.f,2.f));
     //looks
-    player.setSize(sf::Vector2f(50.f, 50.f));
+    /*player.setSize(sf::Vector2f(50.f, 50.f));
     player.setFillColor(sf::Color::White);
     player.setOutlineColor(sf::Color::Black);
-    player.setOutlineThickness(1.f);
+    player.setOutlineThickness(1.f);*/
 }
 
 void Game::initalizeBackground() {
@@ -74,6 +85,10 @@ void Game::initalizeBackground() {
 
 void Game::initalizeVars() {
 	window = nullptr;
+}
+
+void Game::initalizeTextures() {
+    newTexture.loadFromFile("frog1transparent.png");
 }
 
 void Game::initalizeWindow() {

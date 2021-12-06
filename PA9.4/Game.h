@@ -1,8 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/System.hpp>
+#include "Player.h"
 
 class Game {
 public:
@@ -15,7 +13,8 @@ public:
 	void render();
 	void run();
 
-	sf::RectangleShape player;
+	Player player;
+	sf::Texture newTexture;
 	sf::RectangleShape roads[3];
 
 private:
@@ -25,5 +24,6 @@ private:
 	void initalizePlayer();
 	void initalizeBackground();
 	void initalizeVars();
+	void initalizeTextures();
 	void initalizeWindow();
 };
