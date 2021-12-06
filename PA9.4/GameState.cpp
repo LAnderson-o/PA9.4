@@ -4,6 +4,9 @@
 
 GameState::GameState(sf::RenderWindow* nWindow)
 {
+	
+	
+
 	initalizeTextures();
 	initalizePlayer();
 	initalizeBackground();

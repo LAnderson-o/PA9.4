@@ -23,9 +23,3 @@ Bullet* Gun::fireBullet(const sf::Vector2f& newPosition, const sf::Vector2f& new
 //
 //}
 
-
-vector<Bullet> Gun::getBullets()
-{
-	return vBull;
-}
-

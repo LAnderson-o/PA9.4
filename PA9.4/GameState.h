@@ -31,9 +31,9 @@ private:
     sf::FloatRect bounds;
 
 
+    
 
-
-    Player player;
+    Guy player;
     sf::Sprite background;
 
     vector<Bullet*> pBull; //vector of player bullets
