@@ -12,7 +12,8 @@ public:
 	void update();
 	void render();
 	void run();
-	
+	void updatedt();
+
 
 
 	sf::RectangleShape roads[3];
@@ -27,6 +28,11 @@ private:
 	sf::RenderWindow* window;
 
 	sf::Event event;
+
+
+
+	double dt; //deltatime, need to track time for frames
+	sf::Clock dClock;
 
 
 };

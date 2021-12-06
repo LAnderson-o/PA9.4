@@ -4,7 +4,6 @@
 
 GameState::GameState(sf::RenderWindow* nWindow)
 {
-
 	initalizeTextures();
 	initalizePlayer();
 	initalizeBackground();
@@ -50,7 +49,8 @@ void GameState::update()
 
 void GameState::render()
 {
-	window->clear(sf::Color(0, 102, 0, 0));
+	 
+	window->clear();
 
 	window->draw(background);
 	window->draw(player);

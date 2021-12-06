@@ -13,6 +13,15 @@ Game::~Game() {
 }
 
 
+
+
+
+
+void Game::updatedt()
+{
+    dt = dClock.restart().asSeconds();
+}
+
 void Game::update() 
 {
     mainGame->update();
@@ -30,6 +39,8 @@ void Game::update()
             break;
         }
     }
+
+    updatedt();
 }
 
         
