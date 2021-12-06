@@ -37,7 +37,7 @@ void Game::update()
         
 
 
-    void Game::render()
+void Game::render()
     {
         
         //draw 

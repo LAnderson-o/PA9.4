@@ -7,6 +7,7 @@ GameState::GameState(sf::RenderWindow* nWindow)
 
 	initalizeTextures();
 	initalizePlayer();
+	initalizeBackground();
 	this->window = nWindow;
 }
 
@@ -43,6 +44,8 @@ void GameState::render()
 	 
 	window->clear(sf::Color(0, 102, 0, 0));
 
+	window->draw(background);
+
 	window->draw(player);
 
 	window->display();
@@ -50,18 +53,13 @@ void GameState::render()
 
 
 void GameState::initalizeBackground() {
-    ////roads
-    //for (int i = 0; i < 3; i++) {
-    //    roads[i].setFillColor(sf::Color(64, 64, 64, 0));
-    //    int tempwidth = window->getSize().x;
-    //    roads[i].setSize(sf::Vector2f(tempwidth, 60));
-    //    roads[i].setPosition(0, ((window->getSize().y / 3) * i + 1) - 60);
-    //}
+	background.setTexture(backgroundTexture);
 }
 
 
 void GameState::initalizeTextures() {
     newTexture.loadFromFile("frog1transparent.png");
+	backgroundTexture.loadFromFile("Background.png");
 }
 
 

@@ -27,11 +27,11 @@ private:
     
     sf::RenderWindow* window;
     sf::Texture newTexture;
-
+    sf::Texture backgroundTexture;
 
 
     Player player;
-
+    sf::Sprite background;
 
     //vector<Bullet> pBull; //vector of player bullets
     //vector<Bullet> eBull; //vector of enemy bullets
