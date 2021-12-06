@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Player.h"
+#include "GameState.h"
 
 class Game {
 public:
@@ -12,18 +12,21 @@ public:
 	void update();
 	void render();
 	void run();
+	
 
-	Player player;
-	sf::Texture newTexture;
+
 	sf::RectangleShape roads[3];
 
 private:
+
+	GameState* mainGame;
+
+	void initalizeVars();
+	void initalizeWindow();
+
 	sf::RenderWindow* window;
+
 	sf::Event event;
 
-	void initalizePlayer();
-	void initalizeBackground();
-	void initalizeVars();
-	void initalizeTextures();
-	void initalizeWindow();
+
 };
