@@ -151,15 +151,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="Gun.cpp" />
+    <ClCompile Include="Guy.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PlayerFuncs.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bullet.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="Gun.h" />
+    <ClInclude Include="Guy.h" />
+    <ClInclude Include="Header.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TemplateLinkedList.h" />
     <ClInclude Include="TemplateNode.h" />

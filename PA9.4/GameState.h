@@ -5,7 +5,7 @@
 
 
 #include "Player.h"
-
+#include "Guy.h"
 //#include "Player.h"
 //#include "Enemy.h"
 
@@ -30,10 +30,12 @@ private:
     sf::Texture backgroundTexture;
 
 
+
+
     Player player;
     sf::Sprite background;
 
-    //vector<Bullet> pBull; //vector of player bullets
+    vector<Bullet*> pBull; //vector of player bullets
     //vector<Bullet> eBull; //vector of enemy bullets
 
 
