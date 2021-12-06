@@ -24,7 +24,6 @@ void Game::updatedt()
 
 void Game::update() 
 {
-
     mainGame->update();
     //event poll
     while (window->pollEvent(event)) {

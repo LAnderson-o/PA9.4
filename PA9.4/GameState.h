@@ -28,6 +28,7 @@ private:
     sf::RenderWindow* window;
     sf::Texture newTexture;
     sf::Texture backgroundTexture;
+    sf::FloatRect bounds;
 
 
 
