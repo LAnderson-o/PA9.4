@@ -4,17 +4,13 @@
 
 class Enemy : public Guy {
 public:
-	Enemy(int newID, Vector2f& pos, Vector2f& nGoal, Vector2f& nMov) {
-		id = newID;
-		goal = nGoal;
-		mov = nMov;
-		setPosition(pos);
-	};
+
+	Enemy(int newID, Vector2f& pos, Vector2f& nGoal);
 	~Enemy() = default;
 
 	void setID(int newID);
 	
-	virtual void movement();
+	virtual void movement(sf::RenderWindow* window, sf::FloatRect bounds, float &dt);
 	
 	
 	int gX, gY;  //goal pos
@@ -23,9 +19,10 @@ public:
 
 protected:
 	int id;
+	int speed;
 
-	sf::Vector2f goal;
-	sf::Vector2f mov;
+	Vector2f goal;
+	Vector2f mov;
 	
 
 };

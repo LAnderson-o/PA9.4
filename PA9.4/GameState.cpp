@@ -17,7 +17,7 @@ GameState::~GameState()
 {
 }
 
-void GameState::update(double& dt)
+void GameState::update(float& dt)
 {
 	user.update(bounds, pBull, window, dt);
 
@@ -33,7 +33,7 @@ void GameState::update(double& dt)
 		enemies.spawnEnemy(window);
 	}
 	//despawnEnemey(ID);
-	enemies.update(window, bounds);
+	enemies.update(window, bounds, dt);
 
 }
 

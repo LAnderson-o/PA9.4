@@ -1,6 +1,6 @@
 #include "Player.h"
 
-void Player::update(sf::FloatRect& bounds, vector<Bullet*>& pBull, sf::RenderWindow* window, double& dt)
+void Player::update(sf::FloatRect& bounds, vector<Bullet*>& pBull, sf::RenderWindow* window, float& dt)
 {
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
