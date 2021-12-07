@@ -8,7 +8,7 @@ Bullet* Gun::fireBullet(const sf::Vector2f& newPosition, int x, int y)
 
 	if (clock.getElapsedTime().asMilliseconds() > 300)
 	{
-		Bullet* nBul = new Bullet(6, sf::Color::White, newPosition);
+		Bullet* nBul = new Bullet(6, sf::Color::White, newPosition+sf::Vector2f(+17,0));
 		clock.restart();
 		return nBul;
 	}
