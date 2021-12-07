@@ -2,14 +2,14 @@
 
 Enemies::Enemies(){
 	enemyTexture.loadFromFile("flytransparent.png");
+
 }
 
 void Enemies::spawnEnemy() {
 	Enemy enemy1(enemyid);
 	enemyid++;
-	int randy = rand() % 320;
-	int randx = rand() % 480;
-	enemy1.setPosition(randx, randy);
+	
+	enemy1.setPosition(100, 300);
 	enemy1.setTexture(enemyTexture);
 	enemyList.push_back(enemy1);
 }
@@ -34,6 +34,7 @@ void Enemies::update() {
 			i.mX = sin(slope);
 			i.mY = cos(slope);
 			i.move(i.mX, i.mY);
+
 		}
 		//calculate mx and my
 

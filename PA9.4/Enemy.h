@@ -4,7 +4,13 @@
 
 class Enemy : public Guy {
 public:
-	Enemy(int newID);
+	Enemy(int newID) {
+		id = newID;
+		goal.x = rand() % 320;
+		goal.y = rand() % 480;
+		
+
+	};
 	~Enemy() = default;
 
 	void setID(int newID);
@@ -13,10 +19,15 @@ public:
 	
 	
 	int id;
-	int gX, gY;
+	int gX, gY;  //goal pos
 	int mX, mY;
+
+
 protected:
 	int score;
+	
+	sf::Vector2f goal;
+	sf::Vector2f mov;
 	
 
 };

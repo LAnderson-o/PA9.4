@@ -2,7 +2,8 @@
 
 
 
-Bullet* Gun::fireBullet(const sf::Vector2f& newPosition, const sf::Vector2i& newTarget)
+bool Gun::fireBullet(const sf::Vector2f& newPosition, const sf::Vector2i& newTarget, 
+	vector<Bullet*> &pBull)
 {
 	clock.getElapsedTime();
 	
@@ -25,10 +26,12 @@ Bullet* Gun::fireBullet(const sf::Vector2f& newPosition, const sf::Vector2i& new
 
 		Bullet* nBul = new Bullet(6, sf::Color::White, newPosition+sf::Vector2f(+17,0),
 			test);
+		pBull.push_back(nBul);
+		
 		clock.restart();
-		return nBul;
+		return true;
 	}
-	else { return nullptr; }
+	else { return false; }
 	
 }
 //

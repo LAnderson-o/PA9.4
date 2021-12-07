@@ -21,7 +21,7 @@ public:
 
 
 	//??any point to inheratance when we dont use "player guns"?
-	virtual Bullet* firegun(sf::RenderWindow* nWindow); //will need to change work with passed position 
+	virtual bool firegun(sf::RenderWindow* nWindow, vector<Bullet*>& pBull); //will need to change work with passed position 
 
 
 

@@ -2,10 +2,13 @@
 
 class Player : public Guy {
 public:
-	void update();
+	Player() { life = 10; }
+
+	void update(sf::FloatRect& bounds, 
+		vector<Bullet*>& pBull, sf::RenderWindow* window);
 
 
 private:
 	int life;
-
+	
 };
