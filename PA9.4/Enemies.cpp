@@ -6,7 +6,9 @@ Enemies::Enemies(){
 }
 
 void Enemies::spawnEnemy() {
-	Enemy enemy1(enemyid);
+	Enemy* enemy1 = new Enemy(enemyid);
+
+
 	enemyid++;
 	
 	enemy1.setPosition(100, 300);

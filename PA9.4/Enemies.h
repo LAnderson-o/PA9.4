@@ -5,12 +5,18 @@
 class Enemies {
 public:
 	Enemies();
-	void spawnEnemy();
+	~Enemies() {}
+	void spawnEnemy(sf::FloatRect& bounds,
+		vector<Bullet*>& pBull, sf::RenderWindow* window, double& dt);
 	void despawnEnemy();
 	void update();
 
-	std::vector<Enemy> enemyList;
 private:
+
+	std::vector<Enemy*> enemyList;
+
 	sf::Texture enemyTexture;
+	
+	
 	int enemyid;
 };

@@ -10,7 +10,7 @@ public:
 		const sf::Vector2f& newPosition, const sf::Vector2f& newVel)
 		: sf::CircleShape(newRadius)
 	{
-		vel = newVel; //velocity vector, multiplied by dt in gamestate
+		vel = newVel; //velocity vector, multiplied by dt and speed in gamestate
 		this->setFillColor(newColor);
 		this->setPosition(newPosition);
 	}
