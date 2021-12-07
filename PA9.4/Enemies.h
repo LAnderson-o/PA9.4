@@ -5,6 +5,12 @@
 class Enemies {
 public:
 	Enemies();
+	~Enemies() {
+		for (auto j : enemyList) {
+			delete j;
+		}
+	}
+
 	void spawnEnemy(sf:: RenderWindow* window);
 	void despawnEnemy();
 	void update(sf::RenderWindow* window, sf::FloatRect bounds);
@@ -18,4 +24,5 @@ private:
 	
 	
 	int enemyid;
+
 };

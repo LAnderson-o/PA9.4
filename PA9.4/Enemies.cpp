@@ -2,7 +2,7 @@
 
 Enemies::Enemies(){
 	enemyTexture.loadFromFile("flytransparent.png");
-
+	enemyid = 0;
 }
 
 void Enemies::spawnEnemy(sf::RenderWindow* window) {
@@ -36,6 +36,7 @@ void Enemies::despawnEnemy() {
 }
 
 void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds) {
+	
 	//loop through all enemies check if bullet intersects enemy or enemy intersects player
 	for (int i = 0; i < enemyList.size(); ++i) {
 		if (enemyList[i]->getPosition().x == enemyList[i]->gX && enemyList[i]->getPosition().y == enemyList[i]->gY) {
