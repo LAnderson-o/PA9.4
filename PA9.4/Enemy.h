@@ -4,12 +4,11 @@
 
 class Enemy : public Guy {
 public:
-	Enemy(int newID) {
+	Enemy(int newID, Vector2f& pos, Vector2f& nGoal, Vector2f& nMov) {
 		id = newID;
-		goal.x = rand() % 320;
-		goal.y = rand() % 480;
-		
-
+		goal = nGoal;
+		mov = nMov;
+		setPosition(pos);
 	};
 	~Enemy() = default;
 
@@ -18,14 +17,13 @@ public:
 	virtual void movement();
 	
 	
-	int id;
 	int gX, gY;  //goal pos
 	int mX, mY;
 
 
 protected:
-	int score;
-	
+	int id;
+
 	sf::Vector2f goal;
 	sf::Vector2f mov;
 	
