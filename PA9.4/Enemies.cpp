@@ -45,3 +45,9 @@ void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds) {
 
 	}
 }
+
+void Enemies::render(sf::RenderWindow* window) {
+	for (auto j : enemyList) {
+		window->draw(*j);
+	}
+}
