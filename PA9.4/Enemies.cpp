@@ -20,7 +20,6 @@ void Enemies::spawnEnemy(sf::RenderWindow* window) {
 
 void Enemies::despawnEnemy() {
 	
-
 }
 
 void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds) {
@@ -36,9 +35,9 @@ void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds) {
 			enemyList[i]->gY = rand() % window->getSize().y;
 		} else {
 			float slope = enemyList[i]->gY - enemyList[i]->getPosition().y / enemyList[i]->gX - enemyList[i]->getPosition().x;
-			/*enemyList[i].mX = sin(slope);
-			enemyList[i].mY = cos(slope);
-			cout << sin(slope) << " " << cos(slope) << endl;*/
+			//enemyList[i].mX = sin(slope);
+			//enemyList[i].mY = cos(slope);
+			cout << slope << " " << sin(slope) << " " << cos(slope) << endl;
 			enemyList[i]->move(sin(slope), cos(slope));
 		}
 		//calculate mx and my

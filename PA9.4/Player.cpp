@@ -18,6 +18,7 @@ void Player::update(sf::FloatRect& bounds, vector<Bullet*>& pBull, sf::RenderWin
 	{
 
 		if (bounds.contains(sf::Vector2f(0, this->getPosition().y + 53))) {
+			setRotation(180);
 			this->move(0, speed*dt); //speed is pixels per second of speed
 		}
 	}
@@ -25,6 +26,7 @@ void Player::update(sf::FloatRect& bounds, vector<Bullet*>& pBull, sf::RenderWin
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
 		if (bounds.contains(sf::Vector2f(0, this->getPosition().y + 20))) {
+			setRotation(0);
 			this->move(0, -speed*dt);
 		}
 	}
@@ -32,6 +34,7 @@ void Player::update(sf::FloatRect& bounds, vector<Bullet*>& pBull, sf::RenderWin
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		if (bounds.contains(sf::Vector2f(this->getPosition().x, 0))) {
+			setRotation(-90);
 			this->move(-speed*dt, 0);
 		}
 	}
@@ -39,6 +42,7 @@ void Player::update(sf::FloatRect& bounds, vector<Bullet*>& pBull, sf::RenderWin
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		if (bounds.contains(sf::Vector2f(this->getPosition().x + 50, 0))) {
+			setRotation(90);
 			this->move(speed*dt, 0);
 		}
 	}
