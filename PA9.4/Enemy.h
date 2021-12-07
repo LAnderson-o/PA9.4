@@ -7,6 +7,8 @@ public:
 	Enemy(int newID);
 	void setID(int newID);
 	int id;
+	int gX, gY;
+	int mX, mY;
 protected:
 	
 };
