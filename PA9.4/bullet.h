@@ -7,7 +7,7 @@ class Bullet :
 {
 public:
 	Bullet(const double& newRadius, const sf::Color& newColor, 
-		sf::Vector2f& newPosition, sf::Vector2f& newVel)
+		const sf::Vector2f& newPosition, const sf::Vector2f& newVel)
 		: sf::CircleShape(newRadius)
 	{
 		vel = newVel;

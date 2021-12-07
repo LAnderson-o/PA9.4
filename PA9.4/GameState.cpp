@@ -53,7 +53,7 @@ void GameState::update()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		Bullet* temp = player.firegun();
+		Bullet* temp = player.firegun(window);
 		if (temp != nullptr) {
 			pBull.push_back(temp);
 		}
@@ -61,7 +61,7 @@ void GameState::update()
 	
 	for (int i = 0; i < pBull.size(); i++)
 	{
-		pBull[i]->move(pBull[i]->getVel());
+		pBull[i]->move(pBull[i]->getVel().x * 3, pBull[i]->getVel().y * 3);
 	}
 	int randNum = rand() % 100;
 	std::cout << randNum << endl;
