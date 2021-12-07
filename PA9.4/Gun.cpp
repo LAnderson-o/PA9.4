@@ -2,7 +2,7 @@
 
 
 
-Bullet* Gun::fireBullet(const sf::Vector2f& newPosition, const sf::Vector2f& newTarget)
+Bullet* Gun::fireBullet(const sf::Vector2f& newPosition, int x, int y)
 {
 	clock.getElapsedTime();
 
@@ -12,6 +12,7 @@ Bullet* Gun::fireBullet(const sf::Vector2f& newPosition, const sf::Vector2f& new
 		clock.restart();
 		return nBul;
 	}
+	else { return nullptr; }
 
 }
 //
