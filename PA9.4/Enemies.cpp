@@ -46,8 +46,9 @@ void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt, 
 	for (int i = 0; i < enemyList.size(); ++i) {
 		enemyList[i]->movement(window, bounds, dt);
 		for (int j = 0; j < pBull.size(); ++j) {
-			if (enemyList[i]->getTextureRect().intersects(pBull[j]->getTextureRect())) {
+			if (enemyList[i]->getGlobalBounds().intersects(pBull[j]->getGlobalBounds())) {
 				enemyList.erase(enemyList.begin()+i);
+				break;
 			}
 		}
 		
