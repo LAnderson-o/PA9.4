@@ -10,7 +10,6 @@ void Player::update(sf::FloatRect& bounds, vector<Bullet*>& pBull, sf::RenderWin
 	}
 
 	
-	
 	/////movement for player
 
 
