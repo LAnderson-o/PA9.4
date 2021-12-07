@@ -45,16 +45,15 @@ void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt, 
 	//loop through all enemies check if bullet intersects enemy or enemy intersects player
 	for (int i = 0; i < enemyList.size(); ++i) {
 		enemyList[i]->movement(window, bounds, dt);
+		if (enemyList[i]->getGlobalBounds().intersects(userBounds)) {
+			cout << "You Lost" << endl;//losing condition
+		}
 		for (int j = 0; j < pBull.size(); ++j) {
 			if (enemyList[i]->getGlobalBounds().intersects(pBull[j]->getGlobalBounds())) {
 				enemyList.erase(enemyList.begin()+i);
 				break;
 			}
 		}
-		if (enemyList[i]->getGlobalBounds().intersects(userBounds)) {
-			cout << "You Lost" << endl;//losing condition
-		}
-		
 	}
 }
 
