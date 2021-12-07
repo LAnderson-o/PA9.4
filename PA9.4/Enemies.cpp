@@ -24,6 +24,8 @@ void Enemies::despawnEnemy() {
 void Enemies::update() {
 	//loop through all enemies check if bullet intersects enemy or enemy intersects player
 	for (auto i : enemyList) {
-		i.move(rand()%1-1, rand() % 1 - 1);
+		int randX = rand() % 4 - 2;
+		int randY = rand() % 4 - 2;
+		i.move(randX, randY);
 	}
 }
