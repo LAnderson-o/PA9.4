@@ -40,12 +40,17 @@ void Enemies::despawnEnemy() {
 	
 }
 
-void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt) {
+void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt, vector<Bullet*>& pBull) {
 	
 	//loop through all enemies check if bullet intersects enemy or enemy intersects player
 	for (int i = 0; i < enemyList.size(); ++i) {
-		
 		enemyList[i]->movement(window, bounds, dt);
+		for (int j = 0; j < pBull.size(); ++j) {
+			if (enemyList[i]->getTextureRect().intersects(pBull[j]->getTextureRect())) {
+				enemyList.erase(enemyList.begin()+i);
+			}
+		}
+		
 	}
 }
 
