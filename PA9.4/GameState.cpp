@@ -19,7 +19,7 @@ GameState::~GameState()
 
 void GameState::update(double& dt)
 {
-	user.update(bounds, pBull, window);
+	user.update(bounds, pBull, window, dt);
 
 
 
