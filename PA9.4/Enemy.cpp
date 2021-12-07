@@ -68,7 +68,7 @@ void Enemy::movement(sf::RenderWindow* window, sf::FloatRect bounds, float &dt)
 	//}
 	else
 	{
-		move((float) speed*mov*dt);
+		move(speed*mov*dt);
 	}
 }
 

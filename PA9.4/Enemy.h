@@ -13,13 +13,9 @@ public:
 	virtual void movement(sf::RenderWindow* window, sf::FloatRect bounds, float &dt);
 	
 	
-	int gX, gY;  //goal pos
-	int mX, mY;
-
-
 protected:
 	int id;
-	int speed;
+	float speed;
 
 	Vector2f goal;
 	Vector2f mov;
