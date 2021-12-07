@@ -8,6 +8,7 @@ public:
 	void spawnEnemy(sf:: RenderWindow* window);
 	void despawnEnemy();
 	void update(sf::RenderWindow* window, sf::FloatRect bounds);
+	void render(sf::RenderWindow* window);
 
 private:
 

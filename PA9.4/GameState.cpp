@@ -21,9 +21,6 @@ void GameState::update(double& dt)
 {
 	user.update(bounds, pBull, window, dt);
 
-
-
-
 	//update all bullets, will be its own function at some point
 	for (int i = 0; i < pBull.size(); i++)
 	{
@@ -47,9 +44,7 @@ void GameState::render()
 
 	window->draw(background);
 	window->draw(user);
-	for (auto j : enemies.enemyList) {
-		window->draw(j);
-	}
+	enemies.render(window);
 	for (int i = 0; i < pBull.size(); i++)
 	{
 		window->draw(*pBull[i]);
