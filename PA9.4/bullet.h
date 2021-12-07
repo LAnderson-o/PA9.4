@@ -13,11 +13,7 @@ public:
 		this->setPosition(newPosition);
 	}
 
-
-
-
 private:
-
 
 };
 

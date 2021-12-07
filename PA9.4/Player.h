@@ -1,8 +1,11 @@
-#include "TemplateLinkedList.h"
+#include "Guy.h"
 
-class Player : public sf::Sprite {
+class Player : public Guy {
 public:
-	void shoot();
+	void update();
+
+
 private:
-	//List<bullet> bulletList;
+	int life;
+
 };

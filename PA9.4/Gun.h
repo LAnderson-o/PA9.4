@@ -8,7 +8,6 @@
 #include "Bullet.h"
 #include "Header.h"
 
-//will delete
 
 class Gun
 {
@@ -21,7 +20,6 @@ public:
 	//virtual Bullet* fireEBullet(const sf::Vector2f& newPosition, const sf::Vector2f& newTarget);
 	//overridden for 
 
-	
 
 private:
 
