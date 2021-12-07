@@ -24,29 +24,19 @@ void Enemies::despawnEnemy() {
 
 }
 
-void Enemies::despawn(sf::FloatRect bounds) {
-	for (int i = 0; i < enemyList.size(); ++i) {
-		if (!bounds.contains(enemyList[i].getPosition())) {
-			std::vector<Enemy>::iterator it = enemyList.begin();
-			std::advance(it, i);
-			enemyList.erase(it);
-		}
-	}
-}
-
-void Enemies::update(sf::RenderWindow* window) {
+void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds) {
 	//loop through all enemies check if bullet intersects enemy or enemy intersects player
-	for (Enemy i : enemyList) {
-		if (i.getPosition().x == i.gX && i.getPosition().y == i.gY) {
+	for (int i = 0; i < enemyList.size(); ++i) {
+		if (enemyList[i].getPosition().x == enemyList[i].gX && enemyList[i].getPosition().y == enemyList[i].gY) {
 			//reached goal
 			//assign new goal
-			i.gX = rand() % window->getSize().x;
-			i.gY = rand() % window->getSize().y;
+			enemyList[i].gX = rand() % window->getSize().x;
+			enemyList[i].gY = rand() % window->getSize().y;
 		} else {
-			float slope = i.gY - i.getPosition().y / i.gX - i.getPosition().x;
-			i.mX = sin(slope);
-			i.mY = cos(slope);
-			i.move(i.mX, i.mY);
+			float slope = enemyList[i].gY - enemyList[i].getPosition().y / enemyList[i].gX - enemyList[i].getPosition().x;
+			enemyList[i].mX = sin(slope);
+			enemyList[i].mY = cos(slope);
+			enemyList[i].move(enemyList[i].mX, enemyList[i].mY);
 
 		}
 		//calculate mx and my

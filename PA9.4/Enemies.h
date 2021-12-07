@@ -7,8 +7,7 @@ public:
 	Enemies();
 	void spawnEnemy(sf:: RenderWindow* window);
 	void despawnEnemy();
-	void despawn(sf::FloatRect bounds);
-	void update(sf::RenderWindow* window);
+	void update(sf::RenderWindow* window, sf::FloatRect bounds);
 
 	std::vector<Enemy> enemyList;
 private:
