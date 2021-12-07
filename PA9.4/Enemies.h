@@ -8,8 +8,9 @@ public:
 	void spawnEnemy();
 	void despawnEnemy();
 	void update();
+
+	std::vector<Enemy> enemyList;
 private:
 	sf::Texture enemyTexture;
-	std::vector<Enemy> enemyList;
 	int enemyid;
 };

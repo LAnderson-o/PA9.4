@@ -58,6 +58,12 @@ void GameState::update()
 	{
 		pBull[i]->move(0, -4);
 	}
+	int randNum = rand() % 100;
+	std::cout << randNum << endl;
+	if (randNum == 35) {
+		enemies.spawnEnemy();
+	}
+	enemies.update();
 
 }
 
@@ -68,6 +74,9 @@ void GameState::render()
 
 	window->draw(background);
 	window->draw(player);
+	for (auto j : enemies.enemyList) {
+		window->draw(j);
+	}
 	for (int i = 0; i < pBull.size(); i++)
 	{
 		window->draw(*pBull[i]);
@@ -94,4 +103,9 @@ void GameState::initalizePlayer() {
     player.setPosition(400, 100);
     player.setTexture(playerTexture[0]);
     player.setScale(sf::Vector2f(2.f, 2.f));
+}
+
+
+void GameState::initalizeEnemies() {
+
 }
