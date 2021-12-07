@@ -13,6 +13,7 @@ public:
 		vel = newVel; //velocity vector, multiplied by dt and speed in gamestate
 		this->setFillColor(newColor);
 		this->setPosition(newPosition);
+		this->setOrigin(getTextureRect().width / 2, getTextureRect().height / 2);
 	}
 	
 	sf::Vector2f& getVel();
