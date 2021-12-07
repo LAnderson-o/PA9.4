@@ -13,3 +13,14 @@ void Enemies::spawnEnemy() {
 	enemy1.setTexture(enemyTexture);
 	enemyList.push_back(enemy1);
 }
+
+
+void Enemies::despawnEnemy() {
+	
+}
+
+
+void Enemies::update() {
+	//loop through all enemies check if bullet intersects enemy or enemy intersects player
+
+}
