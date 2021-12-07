@@ -9,6 +9,7 @@
 #include <fstream>
 #include <vector>}
 #include <ctime>
+#include <cmath>
 
 using std::getline;
 using std::ofstream;
