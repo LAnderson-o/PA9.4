@@ -21,9 +21,6 @@ void GameState::update(double& dt)
 {
 	user.update(bounds, pBull, window, dt);
 
-
-
-
 	//update all bullets, will be its own function at some point
 	for (int i = 0; i < pBull.size(); i++)
 	{
