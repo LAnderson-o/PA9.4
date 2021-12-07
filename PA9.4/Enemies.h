@@ -5,9 +5,10 @@
 class Enemies {
 public:
 	Enemies();
-	void spawnEnemy();
+	void spawnEnemy(sf:: RenderWindow* window);
 	void despawnEnemy();
-	void update();
+	void despawn(sf::FloatRect bounds);
+	void update(sf::RenderWindow* window);
 
 	std::vector<Enemy> enemyList;
 private:
