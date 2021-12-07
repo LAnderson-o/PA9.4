@@ -6,3 +6,7 @@ Enemy::Enemy(int newID) {
 void Enemy::setID(int newID) {
 	id = newID;
 }
+
+void Enemy::movement()
+{
+}
