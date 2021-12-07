@@ -24,8 +24,10 @@ void Game::updatedt()
 
 void Game::update() 
 {
-    mainGame->update();
-    //event poll
+    mainGame->update(dt);
+    
+    
+    //event polling, might need something else
     while (window->pollEvent(event)) {
         switch (event.type) {
         case sf::Event::Closed:

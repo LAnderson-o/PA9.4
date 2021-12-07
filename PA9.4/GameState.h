@@ -16,7 +16,7 @@ public:
     GameState(sf::RenderWindow* nWindow);
     ~GameState();
 
-    void update();
+    void update(double& dt);
     void render();
     
 
@@ -35,9 +35,11 @@ private:
 
     
     Enemies enemies;
-    Guy player;
+    Player user;
     sf::Sprite background;
 
+
+    //may make BulletManager class that contains these and manages them
     vector<Bullet*> pBull; //vector of player bullets
     //vector<Bullet> eBull; //vector of enemy bullets
 

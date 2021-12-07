@@ -17,52 +17,20 @@ GameState::~GameState()
 {
 }
 
-void GameState::update()
+void GameState::update(double& dt)
 {
-	
+	user.update(bounds, pBull, window, dt);
 
-	/////movement for player
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	{
 
-		if (bounds.contains(sf::Vector2f(0, player.getPosition().y + 53))) {
-			player.move(0, 3);
-		}
-	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	{
-		if (bounds.contains(sf::Vector2f(0, player.getPosition().y + 20))) {
-			player.move(0, -3);
-		}
-	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	{
-		if (bounds.contains(sf::Vector2f(player.getPosition().x, 0))) {
-			player.move(-3, 0);
-		}
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	{
-		if (bounds.contains(sf::Vector2f(player.getPosition().x + 50, 0))) {
-			player.move(3, 0);
-		}
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
-		Bullet* temp = player.firegun(window);
-		if (temp != nullptr) {
-			pBull.push_back(temp);
-		}
-	}
-	
+	//update all bullets, will be its own function at some point
 	for (int i = 0; i < pBull.size(); i++)
 	{
-		pBull[i]->move(pBull[i]->getVel().x * 3, pBull[i]->getVel().y * 3);
+		pBull[i]->move(pBull[i]->getVel().x *300*dt, pBull[i]->getVel().y *300*dt);
 	}
+
+
 	int randNum = rand() % 100;
 	if (randNum == 35) {
 		enemies.spawnEnemy(window);
@@ -79,7 +47,7 @@ void GameState::render()
 	window->clear();
 
 	window->draw(background);
-	window->draw(player);
+	window->draw(user);
 	for (auto j : enemies.enemyList) {
 		window->draw(j);
 	}
@@ -106,9 +74,10 @@ void GameState::initalizeTextures() {
 
 
 void GameState::initalizePlayer() {
-    player.setPosition(400, 100);
-    player.setTexture(playerTexture[0]);
-    player.setScale(sf::Vector2f(2.f, 2.f));
+	//will change to pointer
+    user.setPosition(400, 100);
+    user.setTexture(playerTexture[0]);
+    user.setScale(sf::Vector2f(2.f, 2.f));
 }
 
 

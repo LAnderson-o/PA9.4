@@ -2,6 +2,7 @@
 
 Enemies::Enemies(){
 	enemyTexture.loadFromFile("flytransparent.png");
+
 }
 
 void Enemies::spawnEnemy(sf::RenderWindow* window) {
@@ -46,6 +47,7 @@ void Enemies::update(sf::RenderWindow* window) {
 			i.mX = sin(slope);
 			i.mY = cos(slope);
 			i.move(i.mX, i.mY);
+
 		}
 		//calculate mx and my
 
