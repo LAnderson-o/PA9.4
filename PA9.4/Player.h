@@ -6,7 +6,7 @@ public:
 
 	void update(sf::FloatRect& bounds, 
 		vector<Bullet*>& pBull, sf::RenderWindow* window, float& dt);
-
+	bool firegun(sf::RenderWindow* nWindow, vector<Bullet*>& pBull);
 
 
 private:
