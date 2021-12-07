@@ -15,7 +15,6 @@ void Player::update(sf::FloatRect& bounds, vector<Bullet*>& pBull, sf::RenderWin
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-
 		if (bounds.contains(sf::Vector2f(0, this->getPosition().y+this->getGlobalBounds().height/2))) {
 			this->move(0, speed*dt); //speed is pixels per second of speed
 		}
