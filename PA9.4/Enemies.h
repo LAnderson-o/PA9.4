@@ -9,8 +9,12 @@ public:
 	void despawnEnemy();
 	void update(sf::RenderWindow* window, sf::FloatRect bounds);
 
-	std::vector<Enemy> enemyList;
 private:
+
+	std::vector<Enemy*> enemyList;
+
 	sf::Texture enemyTexture;
+	
+	
 	int enemyid;
 };
