@@ -23,9 +23,19 @@ void Enemies::despawnEnemy() {
 
 void Enemies::update() {
 	//loop through all enemies check if bullet intersects enemy or enemy intersects player
-	for (auto i : enemyList) {
-		int randX = rand() % 4 - 2;
-		int randY = rand() % 4 - 2;
-		i.move(randX, randY);
+	for (Enemy i : enemyList) {
+		if (i.getPosition().x == i.gX && i.getPosition().y == i.gY) {
+			//reached goal
+			//assign new goal
+			i.gX = rand() % 640;
+			i.gY = rand() % 480;
+		} else {
+			float slope = i.gY - i.getPosition().y / i.gX - i.getPosition().x;
+			i.mX = sin(slope);
+			i.mY = cos(slope);
+			i.move(i.mX, i.mY);
+		}
+		//calculate mx and my
+
 	}
 }

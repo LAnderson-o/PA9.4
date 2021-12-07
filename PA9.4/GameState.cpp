@@ -64,7 +64,6 @@ void GameState::update()
 		pBull[i]->move(pBull[i]->getVel().x * 3, pBull[i]->getVel().y * 3);
 	}
 	int randNum = rand() % 100;
-	std::cout << randNum << endl;
 	if (randNum == 35) {
 		enemies.spawnEnemy();
 	}
@@ -74,7 +73,7 @@ void GameState::update()
 
 void GameState::render()
 {
-	 
+	
 	window->clear();
 
 	window->draw(background);

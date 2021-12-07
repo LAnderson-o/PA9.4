@@ -13,6 +13,8 @@ public:
 	
 	
 	int id;
+	int gX, gY;
+	int mX, mY;
 protected:
 	int score;
 	
