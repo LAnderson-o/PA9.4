@@ -48,6 +48,20 @@ void GameState::update()
 			player.move(3, 0);
 		}
 	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		Bullet* temp = player.firegun();
+		if (temp != nullptr) {
+			pBull.push_back(temp);
+		}
+	}
+
+	for (int i = 0; i < pBull.size(); i++)
+	{
+		pBull[i]->move(0, -4);
+	}
+
 }
 
 void GameState::render()
@@ -57,6 +71,10 @@ void GameState::render()
 
 	window->draw(background);
 	window->draw(player);
+	for (int i = 0; i < pBull.size(); i++)
+	{
+		window->draw(*pBull[i]);
+	}
 
 	window->display();
 }

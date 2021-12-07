@@ -17,7 +17,7 @@ public:
 	~Gun() = default;
 
 
-	virtual Bullet* fireBullet(const sf::Vector2f& newPosition, const sf::Vector2f& newTarget);
+	virtual Bullet* fireBullet(const sf::Vector2f& newPosition, int x, int y);
 	//virtual Bullet* fireEBullet(const sf::Vector2f& newPosition, const sf::Vector2f& newTarget);
 	//overridden for 
 
