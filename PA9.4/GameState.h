@@ -5,7 +5,8 @@
 
 
 #include "Player.h"
-
+#include "Guy.h"
+#include "Enemies.h"
 //#include "Player.h"
 //#include "Enemy.h"
 
@@ -22,6 +23,7 @@ public:
 
 private:
     void initalizePlayer();
+    void initalizeEnemies();
     void initalizeBackground();
     void initalizeTextures();
     
@@ -32,8 +34,8 @@ private:
 
 
     
-
-    Player player;
+    Enemies enemies;
+    Guy player;
     sf::Sprite background;
 
     vector<Bullet*> pBull; //vector of player bullets
