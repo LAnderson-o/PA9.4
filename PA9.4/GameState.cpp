@@ -33,9 +33,10 @@ void GameState::update(double& dt)
 
 	int randNum = rand() % 100;
 	if (randNum == 35) {
-		enemies.spawnEnemy();
+		enemies.spawnEnemy(window);
 	}
-	enemies.update();
+	//despawnEnemey(ID);
+	enemies.update(window, bounds);
 
 }
 

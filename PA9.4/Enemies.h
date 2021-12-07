@@ -5,11 +5,9 @@
 class Enemies {
 public:
 	Enemies();
-	~Enemies() {}
-	void spawnEnemy(sf::FloatRect& bounds,
-		vector<Bullet*>& pBull, sf::RenderWindow* window, double& dt);
+	void spawnEnemy(sf:: RenderWindow* window);
 	void despawnEnemy();
-	void update();
+	void update(sf::RenderWindow* window, sf::FloatRect bounds);
 
 private:
 
