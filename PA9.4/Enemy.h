@@ -8,7 +8,7 @@ public:
 		id = newID;
 		goal.x = rand() % 320;
 		goal.y = rand() % 480;
-		
+		setOrigin(getTextureRect().width/2, getTextureRect().height/2);
 
 	};
 	~Enemy() = default;

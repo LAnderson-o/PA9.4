@@ -40,8 +40,6 @@ void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds) {
 			cout << slope << " " << sin(slope) << " " << cos(slope) << endl;
 			enemyList[i]->move(sin(slope), cos(slope));
 		}
-		//calculate mx and my
-
 	}
 }
 
