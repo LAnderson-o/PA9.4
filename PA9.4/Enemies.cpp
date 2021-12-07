@@ -27,8 +27,13 @@ void Enemies::update() {
 		if (i.getPosition().x == i.gX && i.getPosition().y == i.gY) {
 			//reached goal
 			//assign new goal
+			i.gX = rand() % 640;
+			i.gY = rand() % 480;
 		} else {
-
+			float slope = i.gY - i.getPosition().y / i.gX - i.getPosition().x;
+			i.mX = sin(slope);
+			i.mY = cos(slope);
+			i.move(i.mX, i.mY);
 		}
 		//calculate mx and my
 
