@@ -24,7 +24,7 @@ bool Gun::fireBullet(const sf::Vector2f& newPosition, const sf::Vector2f& newTar
 		test.x = n2;
 		test.y = n3;
 
-		Bullet* nBul = new Bullet(6, sf::Color::White, newPosition+sf::Vector2f(+17,0),
+		Bullet* nBul = new Bullet(6, sf::Color::White, newPosition+sf::Vector2f(-7,0),
 			test);
 		pBull.push_back(nBul);
 		

@@ -2,10 +2,11 @@
 
 class Player : public Guy {
 public:
-	Player() { life = 10; speed = 150; }
+	Player() { life = 10; speed = 150;}
 
 	void update(sf::FloatRect& bounds, 
 		vector<Bullet*>& pBull, sf::RenderWindow* window, float& dt);
+
 
 
 private:
