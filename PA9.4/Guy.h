@@ -9,7 +9,7 @@ class Guy :
 	public sf::Sprite
 {
 public:
-
+	
 	//Guy(const double& newRadius, const sf::Vector2f& newPosition) : sf::Sprite(newRadius)
 	//{
 	//	//will update to set passed texture

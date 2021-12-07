@@ -5,9 +5,11 @@
 class Enemies {
 public:
 	Enemies();
+	~Enemies();
+
 	void spawnEnemy(sf:: RenderWindow* window);
 	void despawnEnemy();
-	void update(sf::RenderWindow* window, sf::FloatRect bounds);
+	void update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt);
 	void render(sf::RenderWindow* window);
 
 private:
@@ -18,4 +20,5 @@ private:
 	
 	
 	int enemyid;
+
 };

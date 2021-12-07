@@ -31,7 +31,7 @@ private:
 
 
 
-	double dt; //deltatime, need to track time for frames
+	float dt; //deltatime, need to track time for frames
 	sf::Clock dClock;
 
 

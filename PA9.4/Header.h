@@ -24,6 +24,8 @@ using std::string;
 
 using sf::Clock;
 using sf::RenderWindow;
-
+using sf::Vector2f;
+using sf::Vector2i;
+using sf::Mouse;
 
 #endif 

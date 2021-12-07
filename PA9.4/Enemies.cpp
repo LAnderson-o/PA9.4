@@ -2,27 +2,46 @@
 
 Enemies::Enemies(){
 	enemyTexture.loadFromFile("flytransparent.png");
+	enemyid = 0;
+}
 
+Enemies::~Enemies()
+{
+	
+	for (auto j : enemyList) 
+	{
+		delete j;
+	}
+	
 }
 
 void Enemies::spawnEnemy(sf::RenderWindow* window) {
-	Enemy *enemy1 = new Enemy(enemyid);
+	
+	Vector2f pos;
+	pos.x = (rand() % window->getSize().x);
+	pos.y = (rand() % window->getSize().y / 2);
+
+	Vector2f goal;
+	goal.x = (rand() % window->getSize().x);
+	goal.y = (rand() % window->getSize().y);
+
+	
+
+	Enemy* enemy1 = new Enemy(enemyid, pos, goal);
 	enemyid++;
-	int randy = rand() % window->getSize().y/2;
-	int randx = rand() % window->getSize().x;
-	enemy1->setPosition(randx, randy);
-	//cout << enemy1.getPosition().x << " " << enemy1.getPosition().y << endl;
+
+
 	enemy1->setTexture(enemyTexture);
-	enemy1->gX = rand() % window->getSize().x;
-	enemy1->gY = rand() % window->getSize().y;
 	enemyList.push_back(enemy1);
+
 }
 
 void Enemies::despawnEnemy() {
 	
 }
 
-void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds) {
+void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt) {
+	
 	//loop through all enemies check if bullet intersects enemy or enemy intersects player
 	for (int i = 0; i < enemyList.size(); ++i) {
 		if (enemyList[i]->getPosition().x == enemyList[i]->gX && enemyList[i]->getPosition().y == enemyList[i]->gY) {
@@ -35,11 +54,19 @@ void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds) {
 			enemyList[i]->gY = rand() % window->getSize().y;
 		} else {
 			float slope = enemyList[i]->gY - enemyList[i]->getPosition().y / enemyList[i]->gX - enemyList[i]->getPosition().x;
-			//enemyList[i].mX = sin(slope);
-			//enemyList[i].mY = cos(slope);
-			cout << slope << " " << sin(slope) << " " << cos(slope) << endl;
+			/*enemyList[i].mX = sin(slope);
+			enemyList[i].mY = cos(slope);
+			cout << sin(slope) << " " << cos(slope) << endl;*/
 			enemyList[i]->move(sin(slope), cos(slope));
 		}
+		//calculate mx and my
+
+		//calculate mx and my
+
+		//calculate mx and my
+
+		//calculate mx and my
+
 	}
 }
 

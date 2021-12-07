@@ -4,30 +4,25 @@
 
 class Enemy : public Guy {
 public:
-	Enemy(int newID) {
-		id = newID;
-		goal.x = rand() % 320;
-		goal.y = rand() % 480;
-		setOrigin(getTextureRect().width/2, getTextureRect().height/2);
 
-	};
+	Enemy(int newID, Vector2f& pos, Vector2f& nGoal);
 	~Enemy() = default;
 
 	void setID(int newID);
 	
-	virtual void movement();
+	virtual void movement(sf::RenderWindow* window, sf::FloatRect bounds, float &dt);
 	
 	
-	int id;
 	int gX, gY;  //goal pos
 	int mX, mY;
 
 
 protected:
-	int score;
-	
-	sf::Vector2f goal;
-	sf::Vector2f mov;
+	int id;
+	int speed;
+
+	Vector2f goal;
+	Vector2f mov;
 	
 
 };

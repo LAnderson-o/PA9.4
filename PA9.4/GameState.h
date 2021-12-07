@@ -16,7 +16,7 @@ public:
     GameState(sf::RenderWindow* nWindow);
     ~GameState();
 
-    void update(double& dt);
+    void update(float& dt);
     void render();
     
 

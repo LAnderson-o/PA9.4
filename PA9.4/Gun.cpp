@@ -2,7 +2,7 @@
 
 
 
-bool Gun::fireBullet(const sf::Vector2f& newPosition, const sf::Vector2i& newTarget, 
+bool Gun::fireBullet(const sf::Vector2f& newPosition, const sf::Vector2f& newTarget, 
 	vector<Bullet*> &pBull)
 {
 	clock.getElapsedTime();
@@ -10,7 +10,7 @@ bool Gun::fireBullet(const sf::Vector2f& newPosition, const sf::Vector2i& newTar
 	if (clock.getElapsedTime().asMilliseconds() > 300)
 	{
 
-		sf::Vector2f test = sf::Vector2f(newTarget) - newPosition;
+		sf::Vector2f test = newTarget - newPosition;
 
 		float n1;
 		if (test.x < 0){
