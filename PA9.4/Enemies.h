@@ -9,7 +9,7 @@ public:
 
 	void spawnEnemy(sf:: RenderWindow* window);
 	void despawnEnemy();
-	void update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt, vector<Bullet*>& pBull);
+	void update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt, vector<Bullet*>& pBull,  sf::FloatRect userBounds);
 	void render(sf::RenderWindow* window);
 
 private:

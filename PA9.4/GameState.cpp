@@ -33,7 +33,7 @@ void GameState::update(float& dt)
 		enemies.spawnEnemy(window);
 	}
 	//despawnEnemey(ID);
-	enemies.update(window, bounds, dt, pBull);
+	enemies.update(window, bounds, dt, pBull, user.getGlobalBounds());
 
 }
 

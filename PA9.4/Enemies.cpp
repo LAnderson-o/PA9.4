@@ -40,7 +40,7 @@ void Enemies::despawnEnemy() {
 	
 }
 
-void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt, vector<Bullet*>& pBull) {
+void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt, vector<Bullet*>& pBull, sf::FloatRect userBounds) {
 	
 	//loop through all enemies check if bullet intersects enemy or enemy intersects player
 	for (int i = 0; i < enemyList.size(); ++i) {
@@ -50,6 +50,9 @@ void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt, 
 				enemyList.erase(enemyList.begin()+i);
 				break;
 			}
+		}
+		if (enemyList[i]->getGlobalBounds().intersects(userBounds)) {
+			cout << "You Lost" << endl;//losing condition
 		}
 		
 	}
