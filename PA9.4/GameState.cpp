@@ -54,6 +54,17 @@ void GameState::render()
 	for (int i = 0; i < pBull.size(); i++)
 	{
 		window->draw(*pBull[i]);
+		if (!background.getGlobalBounds().contains(sf::Vector2f(pBull[i]->getPosition().x, pBull[i]->getPosition().y))) {
+			delete pBull[i];
+			pBull.erase(pBull.begin() + i);
+			break;
+		}
+		//if (user.getGlobalBounds().intersects(pBull[i]->getGlobalBounds())) { breaks the bullets
+		//	// life--
+		//	delete pBull[i];
+		//	pBull.erase(pBull.begin() + i);
+		//	break;
+		//}
 	}
 
 	for (int i = 0; i < eBull.size(); i++)
