@@ -22,6 +22,11 @@ public:
 
 
 private:
+    
+
+    void updateBul(float& dt);
+
+    
     void initalizePlayer();
     void initalizeEnemies();
     void initalizeBackground();

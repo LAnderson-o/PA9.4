@@ -28,6 +28,8 @@ void GameState::update(float& dt)
 		if (!bounds.contains(sf::Vector2f(pBull[i]->getPosition().x, pBull[i]->getPosition().y))) {
 			delete pBull[i];
 			pBull.erase(pBull.begin() + i);
+			i--;
+		
 		}
 	}
 
@@ -38,13 +40,15 @@ void GameState::update(float& dt)
 		if (!bounds.contains(sf::Vector2f(eBull[i]->getPosition().x, eBull[i]->getPosition().y))) {
 			delete eBull[i];
 			eBull.erase(eBull.begin() + i);
+			i--;
 		}
 		//player collision despawning
 		else if (user.getGlobalBounds().intersects(eBull[i]->getGlobalBounds())) {
-			user.setLife(user.getLife() - 1);//player damage
+			user.setLife(user.getLife() - eBull[i]->getDam());//player damage
 
 			delete eBull[i];
 			eBull.erase(eBull.begin() + i);
+			i--;
 		}
 	}
 
@@ -76,14 +80,12 @@ void GameState::render()
 	window->draw(lifeText);
 	window->draw(user);
 	enemies.render(window);
+
+	//rendering bullets, should be own function
 	for (int i = 0; i < pBull.size(); i++)
 	{
 		window->draw(*pBull[i]);
-		if (!background.getGlobalBounds().contains(sf::Vector2f(pBull[i]->getPosition().x, pBull[i]->getPosition().y))) {
-			delete pBull[i];
-			pBull.erase(pBull.begin() + i);
-			break;
-		}
+		
 	}
 
 	for (int i = 0; i < eBull.size(); i++)
@@ -107,6 +109,11 @@ void GameState::initalizeTextures() {
 }
 
 
+void GameState::updateBul(float& dt)
+{
+	return;
+}
+
 void GameState::initalizePlayer() {
 	//will change to pointer
 	user.setPosition(400, 100);
@@ -121,7 +128,7 @@ void GameState::initalizeEnemies() {
 }
 
 void GameState::initalizeText() {
-	scoreFont.loadFromFile("comic.ttf");
+	scoreFont.loadFromFile("fonts/comic.ttf");
 	scoreText.setFont(scoreFont);
 	scoreText.setPosition(10, 7);
 	scoreText.setCharacterSize(18);
