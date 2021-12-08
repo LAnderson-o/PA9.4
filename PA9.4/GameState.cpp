@@ -136,4 +136,16 @@ void GameState::initalizeText() {
 	lifeText.setPosition(12, 30);
 	lifeText.setCharacterSize(18);
 
+	gameovertext.setFont(scoreFont);
+	gameovertext.setPosition(bounds.width/2-gameovertext.getLocalBounds().width/2, bounds.height/2);
+
+}
+
+void GameState::gameOver() {
+	
+	for (int i = 0; i < 51; i++) {
+		window->clear(sf::Color(255, 255, 255, i * 5));
+		window->draw(gameovertext);
+	}
+	window->close();
 }

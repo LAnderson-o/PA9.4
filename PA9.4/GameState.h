@@ -19,6 +19,7 @@ public:
     void update(float& dt);
     void render();
     
+    void gameOver();
 
 
 private:
@@ -40,6 +41,7 @@ private:
     sf::Font scoreFont;
     sf::Text scoreText;
     sf::Text lifeText;
+    sf::Text gameovertext;
     
     Enemies enemies;
     Player user;
