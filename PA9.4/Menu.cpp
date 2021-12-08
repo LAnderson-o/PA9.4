@@ -38,3 +38,28 @@ void Menu::draw(sf::RenderWindow& window)
 		window.draw(menu[i]);
 	}
 }
+
+void Menu::MoveUp()
+{
+	if (SelecteditemIndex - 1 >= 0)
+	{
+		menu[SelecteditemIndex].setColor(sf::Color::White);
+		SelecteditemIndex--;
+		menu[SelecteditemIndex].setColor(sf::Color::Red);
+	}
+}
+
+void Menu::MoveDown()
+{
+	if (SelecteditemIndex + 1 < NUM_OF_ITEMS)
+	{
+		menu[SelecteditemIndex].setColor(sf::Color::White);
+		SelecteditemIndex++;
+		menu[SelecteditemIndex].setColor(sf::Color::Red);
+	}
+}
+//getters
+int Menu::GetPressedItem()
+{
+	return SelecteditemIndex;
+}
