@@ -72,9 +72,7 @@ void GameState::initalizeBackground() {
 
 
 void GameState::initalizeTextures() {
-    playerTexture[0].loadFromFile("frog1.1transparent.png");
-	playerTexture[1].loadFromFile("frog2transparent.png");
-	playerTexture[2].loadFromFile("frog3transparent.png");
+    playerTexture.loadFromFile("frog1.1transparent.png");
 	backgroundTexture.loadFromFile("Background.png");
 }
 
@@ -82,10 +80,10 @@ void GameState::initalizeTextures() {
 void GameState::initalizePlayer() {
 	//will change to pointer
     user.setPosition(400, 100);
-    user.setTexture(playerTexture[0]);
+    user.setTexture(playerTexture);
     user.setScale(sf::Vector2f(2.f, 2.f));
 	user.setOrigin(user.getTextureRect().width/2, user.getTextureRect().height/2);
-
+	user.setLife(5);
 }
 
 

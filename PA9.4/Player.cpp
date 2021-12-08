@@ -15,29 +15,28 @@ void Player::update(sf::FloatRect& bounds, vector<Bullet*>& pBull, sf::RenderWin
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-
-		if (bounds.contains(sf::Vector2f(0, this->getPosition().y + 53))) {
+		if (bounds.contains(sf::Vector2f(0, this->getPosition().y+this->getGlobalBounds().height/2))) {
 			this->move(0, speed*dt); //speed is pixels per second of speed
 		}
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		if (bounds.contains(sf::Vector2f(0, this->getPosition().y + 20))) {
+		if (bounds.contains(sf::Vector2f(0, this->getPosition().y-this->getGlobalBounds().height / 2))) {
 			this->move(0, -speed*dt);
 		}
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		if (bounds.contains(sf::Vector2f(this->getPosition().x, 0))) {
+		if (bounds.contains(sf::Vector2f(this->getPosition().x-this->getGlobalBounds().width/2, 0))) {
 			this->move(-speed*dt, 0);
 		}
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		if (bounds.contains(sf::Vector2f(this->getPosition().x + 50, 0))) {
+		if (bounds.contains(sf::Vector2f(this->getPosition().x + this->getGlobalBounds().width / 2, 0))) {
 			this->move(speed*dt, 0);
 		}
 	}
@@ -78,4 +77,16 @@ void Player::upgrade()
 {
 	delete pGun;
 	pGun = new Gun2();
+}
+
+void Player::setLife(int newLife) {
+	life = newLife;
+}
+
+int Player::getLife() {
+	return life;
+}
+
+int Player::getSpeed() {
+	return speed;
 }
