@@ -14,6 +14,8 @@ public:
 	void upgrade();
 	//upgread funciont should be called on certain score from GameState
 
+
+	
 private:
 	
 	

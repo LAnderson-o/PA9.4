@@ -78,15 +78,3 @@ void Player::upgrade()
 	delete pGun;
 	pGun = new Gun2();
 }
-
-void Player::setLife(int newLife) {
-	life = newLife;
-}
-
-int Player::getLife() {
-	return life;
-}
-
-int Player::getSpeed() {
-	return speed;
-}
