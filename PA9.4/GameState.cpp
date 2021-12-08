@@ -121,7 +121,7 @@ void GameState::initalizeEnemies() {
 }
 
 void GameState::initalizeText() {
-	scoreFont.loadFromFile("comic.ttf");
+	scoreFont.loadFromFile("fonts/comic.ttf");
 	scoreText.setFont(scoreFont);
 	scoreText.setPosition(10, 7);
 	scoreText.setCharacterSize(18);
