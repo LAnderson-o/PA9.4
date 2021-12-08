@@ -41,7 +41,7 @@ void Enemies::despawnEnemy() {
 }
 
 void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt, 
-	vector<Bullet*>& pBull, vector<Bullet*>& eBull, Vector2f pPos)
+	vector<Bullet*>& pBull, vector<Bullet*>& eBull, Vector2f pPos, int& score)
 {
 	
 	//loop through all enemies check if bullet intersects enemy or enemy intersects player
@@ -50,12 +50,14 @@ void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt,
 		enemyList[i]->firegun(eBull, pPos);
 		for (int j = 0; j < pBull.size(); ++j) {
 			if (enemyList[i]->getGlobalBounds().intersects(pBull[j]->getGlobalBounds())) {
+				score++;
 				delete enemyList[i];
 				enemyList.erase(enemyList.begin()+i);
 				break;
 			}
 		}
 	}
+
 }
 
 void Enemies::render(sf::RenderWindow* window) {

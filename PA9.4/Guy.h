@@ -24,11 +24,17 @@ public:
 		return false;
 	}; //will need to change work with passed position 
 
+	void setLife(int newLife);
+	int getLife();
+
+	void setScore(int newScore);
+	int& getScore();
 
 
 protected:
 	sf::Clock clock; //foor calcing gun timing
 	int life; //for life total
+	int score;
 	Gun* pGun;
 	int speed; //pixels per second to move
 };

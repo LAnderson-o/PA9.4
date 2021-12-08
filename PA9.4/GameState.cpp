@@ -9,6 +9,7 @@ GameState::GameState(sf::RenderWindow* nWindow)
 	initalizeTextures();
 	initalizePlayer();
 	initalizeBackground();
+	initalizeText();
 	bounds = background.getGlobalBounds();
 	this->window = nWindow;
 }
@@ -26,21 +27,45 @@ void GameState::update(float& dt)
 	for (int i = 0; i < pBull.size(); i++)
 	{
 		pBull[i]->move(pBull[i]->getVel().x *200*dt, pBull[i]->getVel().y *200*dt);
+		//bounds despawning
+		if (!bounds.contains(sf::Vector2f(pBull[i]->getPosition().x, pBull[i]->getPosition().y))) {
+			delete pBull[i];
+			pBull.erase(pBull.begin() + i);
+		}
 	}
 
 	for (int i = 0; i < eBull.size(); i++)
 	{
 		eBull[i]->move(eBull[i]->getVel().x * 200 * dt, eBull[i]->getVel().y * 200 * dt);
+		//bounds despawning
+		if (!bounds.contains(sf::Vector2f(eBull[i]->getPosition().x, eBull[i]->getPosition().y))) {
+			delete eBull[i];
+			eBull.erase(eBull.begin() + i);
+		}
+		//player collision despawning
+		else if (user.getGlobalBounds().intersects(eBull[i]->getGlobalBounds())) {
+			user.setLife(user.getLife()-1);//player damage
+
+			delete eBull[i];
+			eBull.erase(eBull.begin() + i);
+		}
 	}
 
+	//score
+	string str = "Score: ";
+	str += std::to_string(user.getScore());
+	scoreText.setString(str);
 
+	//life
+	str = "Life: ";
+	str += std::to_string(user.getLife());
+	lifeText.setString(str);
 
 	int randNum = rand() % 100;
 	if (randNum == 35) {
 		enemies.spawnEnemy(window);
 	}
-	//despawnEnemey(ID);
-	enemies.update(window, bounds, dt, pBull, eBull, user.getPosition());
+	enemies.update(window, bounds, dt, pBull, eBull, user.getPosition(), user.getScore());
 
 }
 
@@ -48,29 +73,25 @@ void GameState::render()
 {
 	int temp = 0;
 	window->clear();
-	
 
-	//temp to test menu
-	if (temp == 1)
+	window->draw(background);
+	window->draw(user);
+	enemies.render(window);
+	for (int i = 0; i < pBull.size(); i++)
 	{
-		window->draw(background);
-		window->draw(user);
-		enemies.render(window);
-		for (int i = 0; i < pBull.size(); i++)
-		{
-			window->draw(*pBull[i]);
-			if (!background.getGlobalBounds().contains(sf::Vector2f(pBull[i]->getPosition().x, pBull[i]->getPosition().y))) {
-				delete pBull[i];
-				pBull.erase(pBull.begin() + i);
-				break;
-			}
-			//if (user.getGlobalBounds().intersects(pBull[i]->getGlobalBounds())) { breaks the bullets
-			//	// life--
-			//	delete pBull[i];
-			//	pBull.erase(pBull.begin() + i);
-			//	break;
-			//}
+		window->draw(*pBull[i]);
+		if (!background.getGlobalBounds().contains(sf::Vector2f(pBull[i]->getPosition().x, pBull[i]->getPosition().y))) {
+			delete pBull[i];
+			pBull.erase(pBull.begin() + i);
+			break;
 		}
+		//if (user.getGlobalBounds().intersects(pBull[i]->getGlobalBounds())) { breaks the bullets
+		//	// life--
+		//	delete pBull[i];
+		//	pBull.erase(pBull.begin() + i);
+		//	break;
+		//}
+	}
 
 		for (int i = 0; i < eBull.size(); i++)
 		{
@@ -108,5 +129,17 @@ void GameState::initalizePlayer() {
 
 
 void GameState::initalizeEnemies() {
+
+}
+
+void GameState::initalizeText() {
+	scoreFont.loadFromFile("comic.ttf");
+	scoreText.setFont(scoreFont);
+	scoreText.setPosition(10, 7);
+	scoreText.setCharacterSize(18);
+
+	lifeText.setFont(scoreFont);
+	lifeText.setPosition(12, 30);
+	lifeText.setCharacterSize(18);
 
 }
