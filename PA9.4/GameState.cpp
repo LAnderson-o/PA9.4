@@ -42,22 +42,18 @@ void GameState::update(float& dt)
 		}
 		//player collision despawning
 		else if (user.getGlobalBounds().intersects(eBull[i]->getGlobalBounds())) {
-			user.setLife(user.getLife()-1);
-			cout << "you have been shot" << user.getLife() << endl;
+			user.setLife(user.getLife()-1);//player damage
 
 			delete eBull[i];
 			eBull.erase(eBull.begin() + i);
 		}
 	}
 
-
-
 	int randNum = rand() % 100;
 	if (randNum == 35) {
 		enemies.spawnEnemy(window);
 	}
-	//despawnEnemey(ID);
-	enemies.update(window, bounds, dt, pBull, eBull, user.getPosition());
+	enemies.update(window, bounds, dt, pBull, eBull, user.getPosition(), user.getScore());
 
 }
 
@@ -77,12 +73,6 @@ void GameState::render()
 			pBull.erase(pBull.begin() + i);
 			break;
 		}
-		//if (user.getGlobalBounds().intersects(pBull[i]->getGlobalBounds())) { breaks the bullets
-		//	// life--
-		//	delete pBull[i];
-		//	pBull.erase(pBull.begin() + i);
-		//	break;
-		//}
 	}
 
 	for (int i = 0; i < eBull.size(); i++)

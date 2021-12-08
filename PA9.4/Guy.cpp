@@ -8,3 +8,10 @@ int Guy::getLife() {
 	return life;
 }
 
+void Guy::setScore(int newScore) {
+	score = newScore;
+}
+
+int& Guy::getScore() {
+	return score;
+}
