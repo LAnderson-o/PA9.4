@@ -108,11 +108,6 @@ void GameState::initalizeTextures() {
 	backgroundTexture.loadFromFile("Background.png");
 }
 
-void GameState::initalizeMenu()
-{
-	 Menu menu(window->getSize().x, window->getSize().y);
-}
-
 void GameState::initalizePlayer() {
 	//will change to pointer
 	user.setPosition(400, 100);

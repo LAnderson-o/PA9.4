@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Guy.h"
 #include "Enemies.h"
+
 //#include "Player.h"
 //#include "Enemy.h"
 
@@ -33,6 +34,8 @@ private:
     void initalizeBackground();
     void initalizeTextures();
     void initalizeText();
+    
+    
     
     sf::RenderWindow* window;
     sf::Texture playerTexture;
