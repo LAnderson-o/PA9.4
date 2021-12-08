@@ -19,6 +19,7 @@ public:
 	}
 	
 	sf::Vector2f& getVel();
+	int getDam();
 
 private:
 	sf::Vector2f vel;

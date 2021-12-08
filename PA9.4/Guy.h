@@ -2,14 +2,14 @@
 #include "Header.h"
 #include "Gun2.h"
 
-	//plant to inherat from this to create "player" and "enemy" class 
-	//will contain life, points on death, could have other stuff
+//plant to inherat from this to create "player" and "enemy" class 
+//will contain life, points on death, could have other stuff
 
 class Guy :
 	public sf::Sprite
 {
 public:
-	
+
 	//Guy(const double& newRadius, const sf::Vector2f& newPosition) : sf::Sprite(newRadius)
 	//{
 	//	//will update to set passed texture
@@ -38,7 +38,6 @@ protected:
 	Gun* pGun;
 	int speed; //pixels per second to move
 };
-
 
 
 

@@ -1,10 +1,9 @@
 #include "GameState.h"
 
 
-//constructor & deconstructor
+
 GameState::GameState(sf::RenderWindow* nWindow)
 {
-
 	initalizeTextures();
 	initalizePlayer();
 	initalizeBackground();
@@ -17,7 +16,6 @@ GameState::~GameState()
 {
 }
 
-//public functions
 void GameState::update(float& dt)
 {
 	user.update(bounds, pBull, window, dt);
@@ -25,11 +23,13 @@ void GameState::update(float& dt)
 	//update all bullets, will be its own function at some point
 	for (int i = 0; i < pBull.size(); i++)
 	{
-		pBull[i]->move(pBull[i]->getVel().x *200*dt, pBull[i]->getVel().y *200*dt);
+		pBull[i]->move(pBull[i]->getVel().x * 200 * dt, pBull[i]->getVel().y * 200 * dt);
 		//bounds despawning
 		if (!bounds.contains(sf::Vector2f(pBull[i]->getPosition().x, pBull[i]->getPosition().y))) {
 			delete pBull[i];
 			pBull.erase(pBull.begin() + i);
+			i--;
+		
 		}
 	}
 
@@ -40,13 +40,15 @@ void GameState::update(float& dt)
 		if (!bounds.contains(sf::Vector2f(eBull[i]->getPosition().x, eBull[i]->getPosition().y))) {
 			delete eBull[i];
 			eBull.erase(eBull.begin() + i);
+			i--;
 		}
 		//player collision despawning
 		else if (user.getGlobalBounds().intersects(eBull[i]->getGlobalBounds())) {
-			user.setLife(user.getLife()-1);//player damage
+			user.setLife(user.getLife() - eBull[i]->getDam());//player damage
 
 			delete eBull[i];
 			eBull.erase(eBull.begin() + i);
+			i--;
 		}
 	}
 
@@ -70,57 +72,53 @@ void GameState::update(float& dt)
 
 void GameState::render()
 {
-	int temp = 0;
+
 	window->clear();
 
 	window->draw(background);
+	window->draw(scoreText);
+	window->draw(lifeText);
 	window->draw(user);
 	enemies.render(window);
+
+	//rendering bullets, should be own function
 	for (int i = 0; i < pBull.size(); i++)
 	{
 		window->draw(*pBull[i]);
-		if (!background.getGlobalBounds().contains(sf::Vector2f(pBull[i]->getPosition().x, pBull[i]->getPosition().y))) {
-			delete pBull[i];
-			pBull.erase(pBull.begin() + i);
-			break;
-		}
-		//if (user.getGlobalBounds().intersects(pBull[i]->getGlobalBounds())) { breaks the bullets
-		//	// life--
-		//	delete pBull[i];
-		//	pBull.erase(pBull.begin() + i);
-		//	break;
-		//}
+		
 	}
 
-		for (int i = 0; i < eBull.size(); i++)
-		{
-			window->draw(*eBull[i]);
-		}
-
+	for (int i = 0; i < eBull.size(); i++)
+	{
+		window->draw(*eBull[i]);
 	}
+
+
 	window->display();
 }
 
-//initializers
+
 void GameState::initalizeBackground() {
 	background.setTexture(backgroundTexture);
 }
 
 
 void GameState::initalizeTextures() {
-    playerTexture.loadFromFile("frog1.1transparent.png");
+	playerTexture.loadFromFile("frog1.1transparent.png");
 	backgroundTexture.loadFromFile("Background.png");
 }
 
-
-
+void GameState::initalizeMenu()
+{
+	 Menu menu(window->getSize().x, window->getSize().y);
+}
 
 void GameState::initalizePlayer() {
 	//will change to pointer
-    user.setPosition(400, 100);
-    user.setTexture(playerTexture);
-    user.setScale(sf::Vector2f(2.f, 2.f));
-	user.setOrigin(user.getTextureRect().width/2, user.getTextureRect().height/2);
+	user.setPosition(400, 100);
+	user.setTexture(playerTexture);
+	user.setScale(sf::Vector2f(2.f, 2.f));
+	user.setOrigin(user.getTextureRect().width / 2, user.getTextureRect().height / 2);
 }
 
 
@@ -129,7 +127,7 @@ void GameState::initalizeEnemies() {
 }
 
 void GameState::initalizeText() {
-	scoreFont.loadFromFile("comic.ttf");
+	scoreFont.loadFromFile("fonts/comic.ttf");
 	scoreText.setFont(scoreFont);
 	scoreText.setPosition(10, 7);
 	scoreText.setCharacterSize(18);
