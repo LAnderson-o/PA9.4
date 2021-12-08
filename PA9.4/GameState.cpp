@@ -4,7 +4,6 @@
 //constructor & deconstructor
 GameState::GameState(sf::RenderWindow* nWindow)
 {
-	initalizeMenu();
 
 	initalizeTextures();
 	initalizePlayer();
@@ -113,10 +112,7 @@ void GameState::initalizeTextures() {
 	backgroundTexture.loadFromFile("Background.png");
 }
 
-void GameState::initalizeMenu()
-{
-	 Menu menu(window->getSize().x, window->getSize().y);
-}
+
 
 
 void GameState::initalizePlayer() {
