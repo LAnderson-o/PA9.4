@@ -20,6 +20,8 @@ void Game::updatedt()
 
 void Game::update()
 {
+
+
     mainGame->update(dt);
 
 

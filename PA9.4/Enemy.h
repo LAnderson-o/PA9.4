@@ -26,6 +26,7 @@ protected:
 
 	Vector2f goal;//randomly generated goal to move to
 	Vector2f mov; //small unit vector to move in, caed from goal and getPos
+	Vector2f wMov; //small unit vector to move in, caed from goal and getPos
 	
 	Clock mClock; //for wiggle movement
 };

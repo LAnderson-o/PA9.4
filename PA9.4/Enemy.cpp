@@ -26,6 +26,9 @@ Enemy::Enemy(int newID, Vector2f& pos, Vector2f& nGoal, int& nLife)
 	mov.x = n2;
 	mov.y = n3;
 
+	wMov.x = -n3;
+	wMov.y = n2;
+
 
 	setPosition(pos);
 	pGun = new Gun();
@@ -55,7 +58,8 @@ void Enemy::movement(sf::RenderWindow* window, sf::FloatRect bounds, float &dt)
 
 	else
 	{
-		move(speed*mov*dt);
+
+		move(speed*mov*dt +  100*sin((float)mClock.getElapsedTime().asMilliseconds()/5)*wMov*dt);
 	}
 }
 

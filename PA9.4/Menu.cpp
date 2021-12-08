@@ -43,9 +43,10 @@ void Menu::MoveUp()
 {
 	if (SelecteditemIndex - 1 >= 0)
 	{
-		menu[SelecteditemIndex].setColor(sf::Color::White);
+		
+		menu[SelecteditemIndex].setFillColor(sf::Color::White);
 		SelecteditemIndex--;
-		menu[SelecteditemIndex].setColor(sf::Color::Red);
+		menu[SelecteditemIndex].setFillColor(sf::Color::Red);
 	}
 }
 
@@ -53,9 +54,9 @@ void Menu::MoveDown()
 {
 	if (SelecteditemIndex + 1 < NUM_OF_ITEMS)
 	{
-		menu[SelecteditemIndex].setColor(sf::Color::White);
+		menu[SelecteditemIndex].setFillColor(sf::Color::White);
 		SelecteditemIndex++;
-		menu[SelecteditemIndex].setColor(sf::Color::Red);
+		menu[SelecteditemIndex].setFillColor(sf::Color::Red);
 	}
 }
 //getters
