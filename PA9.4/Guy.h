@@ -21,7 +21,7 @@ public:
 
 
 	virtual bool firegun(sf::RenderWindow* nWindow, vector<Bullet*>& pBull) {
-		return false;
+		return true;
 	}; //will need to change work with passed position 
 
 	void setLife(int newLife);
@@ -29,6 +29,7 @@ public:
 
 	void setScore(int newScore);
 	int& getScore();
+
 
 
 protected:
