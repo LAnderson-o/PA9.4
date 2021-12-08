@@ -45,7 +45,9 @@ void GameState::update(float& dt)
 		//player collision despawning
 		else if (user.getGlobalBounds().intersects(eBull[i]->getGlobalBounds())) {
 			user.setLife(user.getLife() - eBull[i]->getDam());//player damage
-
+			if (user.getLife() <= 0) {
+				gameOver();
+			}
 			delete eBull[i];
 			eBull.erase(eBull.begin() + i);
 			i--;
@@ -144,8 +146,8 @@ void GameState::initalizeText() {
 
 void GameState::gameOver() {
 	
-	for (int i = 0; i < 51; i++) {
-		window->clear(sf::Color(255, 255, 255, i * 5));
+	while(!sf::Event) {
+		window->clear(sf::Color(255, 255, 255));
 		window->draw(gameovertext);
 	}
 	window->close();

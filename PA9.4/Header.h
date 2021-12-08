@@ -10,6 +10,7 @@
 #include <vector>}
 #include <ctime>
 #include <cmath>
+#include <Windows.h>
 
 
 using std::getline;
