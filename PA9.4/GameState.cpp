@@ -71,6 +71,7 @@ void GameState::initalizePlayer() {
     user.setTexture(playerTexture);
     user.setScale(sf::Vector2f(2.f, 2.f));
 	user.setOrigin(user.getTextureRect().width/2, user.getTextureRect().height/2);
+	user.setLife(5);
 }
 
 

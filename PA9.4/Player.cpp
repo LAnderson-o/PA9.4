@@ -64,3 +64,15 @@ bool Player::firegun(sf::RenderWindow* nWindow, vector<Bullet*>& pBull)
 	return pGun.fireBullet(this->getPosition(), nWindow->mapPixelToCoords(Mouse::getPosition(*nWindow)), pBull);
 
 }
+
+void Player::setLife(int newLife) {
+	life = newLife;
+}
+
+int Player::getLife() {
+	return life;
+}
+
+int Player::getSpeed() {
+	return speed;
+}
