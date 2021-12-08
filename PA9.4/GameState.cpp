@@ -10,6 +10,7 @@ GameState::GameState(sf::RenderWindow* nWindow)
 	initalizePlayer();
 	initalizeBackground();
 	bounds = background.getGlobalBounds();
+	initalizeText();
 	this->window = nWindow;
 }
 
@@ -49,6 +50,16 @@ void GameState::update(float& dt)
 		}
 	}
 
+	//score
+	string str = "Score: ";
+	str += std::to_string(user.getScore());
+	scoreText.setString(str);
+
+	//life
+	str = "Life: ";
+	str += std::to_string(user.getLife());
+	lifeText.setString(str);
+
 	int randNum = rand() % 100;
 	if (randNum == 35) {
 		enemies.spawnEnemy(window);
@@ -63,6 +74,8 @@ void GameState::render()
 	window->clear();
 
 	window->draw(background);
+	window->draw(scoreText);
+	window->draw(lifeText);
 	window->draw(user);
 	enemies.render(window);
 	for (int i = 0; i < pBull.size(); i++)
@@ -106,5 +119,17 @@ void GameState::initalizePlayer() {
 
 
 void GameState::initalizeEnemies() {
+
+}
+
+void GameState::initalizeText() {
+	scoreFont.loadFromFile("comic.ttf");
+	scoreText.setFont(scoreFont);
+	scoreText.setPosition(10, 7);
+	scoreText.setCharacterSize(18);
+
+	lifeText.setFont(scoreFont);
+	lifeText.setPosition(12, 30);
+	lifeText.setCharacterSize(18);
 
 }

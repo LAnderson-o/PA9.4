@@ -26,13 +26,15 @@ private:
     void initalizeEnemies();
     void initalizeBackground();
     void initalizeTextures();
+    void initalizeText();
     
     sf::RenderWindow* window;
     sf::Texture playerTexture;
     sf::Texture backgroundTexture;
     sf::FloatRect bounds;
-
-
+    sf::Font scoreFont;
+    sf::Text scoreText;
+    sf::Text lifeText;
     
     Enemies enemies;
     Player user;
