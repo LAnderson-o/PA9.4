@@ -160,6 +160,7 @@
     <ClCompile Include="Gun2.cpp" />
     <ClCompile Include="Guy.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +173,7 @@
     <ClInclude Include="Gun2.h" />
     <ClInclude Include="Guy.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TemplateLinkedList.h" />
     <ClInclude Include="TemplateNode.h" />

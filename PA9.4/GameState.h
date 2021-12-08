@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Guy.h"
 #include "Enemies.h"
+#include "Menu.h"
 //#include "Player.h"
 //#include "Enemy.h"
 
@@ -31,7 +32,6 @@ private:
     sf::Texture playerTexture;
     sf::Texture backgroundTexture;
     sf::FloatRect bounds;
-
 
     
     Enemies enemies;

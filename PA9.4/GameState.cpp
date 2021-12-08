@@ -1,10 +1,10 @@
 #include "GameState.h"
 
 
-
+//constructor & deconstructor
 GameState::GameState(sf::RenderWindow* nWindow)
 {
-	
+	initalizeMenu();
 
 	initalizeTextures();
 	initalizePlayer();
@@ -17,6 +17,7 @@ GameState::~GameState()
 {
 }
 
+//public functions
 void GameState::update(float& dt)
 {
 	user.update(bounds, pBull, window, dt);
@@ -45,38 +46,42 @@ void GameState::update(float& dt)
 
 void GameState::render()
 {
-	
+	int temp = 0;
 	window->clear();
+	
 
-	window->draw(background);
-	window->draw(user);
-	enemies.render(window);
-	for (int i = 0; i < pBull.size(); i++)
+	//temp to test menu
+	if (temp == 1)
 	{
-		window->draw(*pBull[i]);
-		if (!background.getGlobalBounds().contains(sf::Vector2f(pBull[i]->getPosition().x, pBull[i]->getPosition().y))) {
-			delete pBull[i];
-			pBull.erase(pBull.begin() + i);
-			break;
+		window->draw(background);
+		window->draw(user);
+		enemies.render(window);
+		for (int i = 0; i < pBull.size(); i++)
+		{
+			window->draw(*pBull[i]);
+			if (!background.getGlobalBounds().contains(sf::Vector2f(pBull[i]->getPosition().x, pBull[i]->getPosition().y))) {
+				delete pBull[i];
+				pBull.erase(pBull.begin() + i);
+				break;
+			}
+			//if (user.getGlobalBounds().intersects(pBull[i]->getGlobalBounds())) { breaks the bullets
+			//	// life--
+			//	delete pBull[i];
+			//	pBull.erase(pBull.begin() + i);
+			//	break;
+			//}
 		}
-		//if (user.getGlobalBounds().intersects(pBull[i]->getGlobalBounds())) { breaks the bullets
-		//	// life--
-		//	delete pBull[i];
-		//	pBull.erase(pBull.begin() + i);
-		//	break;
-		//}
+
+		for (int i = 0; i < eBull.size(); i++)
+		{
+			window->draw(*eBull[i]);
+		}
+
 	}
-
-	for (int i = 0; i < eBull.size(); i++)
-	{
-		window->draw(*eBull[i]);
-	}
-
-
 	window->display();
 }
 
-
+//initializers
 void GameState::initalizeBackground() {
 	background.setTexture(backgroundTexture);
 }
@@ -85,6 +90,11 @@ void GameState::initalizeBackground() {
 void GameState::initalizeTextures() {
     playerTexture.loadFromFile("frog1.1transparent.png");
 	backgroundTexture.loadFromFile("Background.png");
+}
+
+void GameState::initalizeMenu()
+{
+	 Menu menu(window->getSize().x, window->getSize().y);
 }
 
 

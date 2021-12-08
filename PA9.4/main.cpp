@@ -1,8 +1,7 @@
 #include "Game.h"
 
-int main(){
-    //sf::Font font;
-    //font.loadFromFile("comic.ttf");
+int main()
+{
     Game* game = new Game();
     game->run();
     return 0;

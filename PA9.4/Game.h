@@ -2,6 +2,7 @@
 
 #include "GameState.h"
 
+
 class Game {
 public:
 	//constructors
