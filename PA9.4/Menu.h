@@ -14,9 +14,10 @@ public:
 	void draw(sf::RenderWindow& window);
 	void MoveUp();
 	void MoveDown();
+	int GetPressedItem();
 
 private:
-	int itemIndex;
+	int SelecteditemIndex;
 	sf::Font font;
 	sf::Text menu[NUM_OF_ITEMS];
 };
