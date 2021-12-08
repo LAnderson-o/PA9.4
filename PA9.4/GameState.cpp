@@ -9,6 +9,7 @@ GameState::GameState(sf::RenderWindow* nWindow)
 	initalizeBackground();
 	initalizeText();
 	bounds = background.getGlobalBounds();
+	lost = false;
 	this->window = nWindow;
 }
 
@@ -45,9 +46,9 @@ void GameState::update(float& dt)
 		//player collision despawning
 		else if (user.getGlobalBounds().intersects(eBull[i]->getGlobalBounds())) {
 			user.setLife(user.getLife() - eBull[i]->getDam());//player damage
-			//if (user.getLife() <= 0) {
-			//	gameOver();
-			//}
+			if (user.getLife() <= 0) {
+				gameOver();
+			}
 			delete eBull[i];
 			eBull.erase(eBull.begin() + i);
 			i--;
@@ -74,29 +75,34 @@ void GameState::update(float& dt)
 
 void GameState::render()
 {
+	if (lost == false) {
+		window->clear();
 
-	window->clear();
+		window->draw(background);
+		window->draw(scoreText);
+		window->draw(lifeText);
+		window->draw(user);
+		enemies.render(window);
 
-	window->draw(background);
-	window->draw(scoreText);
-	window->draw(lifeText);
-	window->draw(user);
-	enemies.render(window);
+		//rendering bullets, should be own function
+		for (int i = 0; i < pBull.size(); i++)
+		{
+			window->draw(*pBull[i]);
 
-	//rendering bullets, should be own function
-	for (int i = 0; i < pBull.size(); i++)
-	{
-		window->draw(*pBull[i]);
-		
+		}
+
+		for (int i = 0; i < eBull.size(); i++)
+		{
+			window->draw(*eBull[i]);
+		}
+
+
+		window->display();
+	}else if(lost == true){
+		window->clear(sf::Color::Black);
+		window->draw(gameovertext);
+		window->display();
 	}
-
-	for (int i = 0; i < eBull.size(); i++)
-	{
-		window->draw(*eBull[i]);
-	}
-
-
-	window->display();
 }
 
 
@@ -134,12 +140,13 @@ void GameState::initalizeText() {
 	lifeText.setCharacterSize(18);
 
 	gameovertext.setFont(scoreFont);
-	gameovertext.setPosition(bounds.width/2-gameovertext.getLocalBounds().width/2, bounds.height/2);
+	gameovertext.setPosition(320, 240);
 	gameovertext.setFillColor(sf::Color::White);
 	gameovertext.setCharacterSize(32);
+	gameovertext.setString("Game Over");
 
 }
 
 void GameState::gameOver() {
-	window->close();
+	lost = true;
 }
