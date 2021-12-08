@@ -56,6 +56,7 @@ void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt,
 			}
 		}
 	}
+
 }
 
 void Enemies::render(sf::RenderWindow* window) {

@@ -13,10 +13,6 @@ Game::~Game() {
 }
 
 
-
-
-
-
 void Game::updatedt()
 {
     dt = dClock.restart().asSeconds();

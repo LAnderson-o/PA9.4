@@ -25,11 +25,29 @@ void GameState::update(float& dt)
 	for (int i = 0; i < pBull.size(); i++)
 	{
 		pBull[i]->move(pBull[i]->getVel().x *200*dt, pBull[i]->getVel().y *200*dt);
+		//bounds despawning
+		if (!bounds.contains(sf::Vector2f(pBull[i]->getPosition().x, pBull[i]->getPosition().y))) {
+			delete pBull[i];
+			pBull.erase(pBull.begin() + i);
+		}
 	}
 
 	for (int i = 0; i < eBull.size(); i++)
 	{
 		eBull[i]->move(eBull[i]->getVel().x * 200 * dt, eBull[i]->getVel().y * 200 * dt);
+		//bounds despawning
+		if (!bounds.contains(sf::Vector2f(eBull[i]->getPosition().x, eBull[i]->getPosition().y))) {
+			delete eBull[i];
+			eBull.erase(eBull.begin() + i);
+		}
+		//player collision despawning
+		else if (user.getGlobalBounds().intersects(eBull[i]->getGlobalBounds())) {
+			user.setLife(user.getLife()-1);
+			cout << "you have been shot" << user.getLife() << endl;
+
+			delete eBull[i];
+			eBull.erase(eBull.begin() + i);
+		}
 	}
 
 

@@ -24,6 +24,8 @@ public:
 		return false;
 	}; //will need to change work with passed position 
 
+	void setLife(int newLife);
+	int getLife();
 
 
 protected:
