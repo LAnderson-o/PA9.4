@@ -13,7 +13,7 @@ public:
 	//despawn condition and event (score etc)
 	void update(sf::RenderWindow* window, sf::FloatRect bounds,
 		float& dt, vector<Bullet*>& pBull, 
-		vector<Bullet*>& eBull, Vector2f pPos);
+		vector<Bullet*>& eBull, Vector2f pPos, int& score);
 	//fires gun and moves enemies
 	void render(sf::RenderWindow* window);
 
