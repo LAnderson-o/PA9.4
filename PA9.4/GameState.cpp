@@ -140,7 +140,7 @@ void GameState::initalizeText() {
 
 void GameState::gameOver() {
 	
-	while(sf::Event::KeyPressed != sf::Keyboard::Space) {
+	while(true) {
 		window->clear(sf::Color(255, 255, 255));
 		window->draw(gameovertext);
 	}
