@@ -24,8 +24,14 @@ void GameState::update(float& dt)
 	//update all bullets, will be its own function at some point
 	for (int i = 0; i < pBull.size(); i++)
 	{
-		pBull[i]->move(pBull[i]->getVel().x *300*dt, pBull[i]->getVel().y *300*dt);
+		pBull[i]->move(pBull[i]->getVel().x *200*dt, pBull[i]->getVel().y *200*dt);
 	}
+
+	for (int i = 0; i < eBull.size(); i++)
+	{
+		eBull[i]->move(eBull[i]->getVel().x * 200 * dt, eBull[i]->getVel().y * 200 * dt);
+	}
+
 
 
 	int randNum = rand() % 100;
@@ -33,7 +39,7 @@ void GameState::update(float& dt)
 		enemies.spawnEnemy(window);
 	}
 	//despawnEnemey(ID);
-	enemies.update(window, bounds, dt, pBull);
+	enemies.update(window, bounds, dt, pBull, eBull, user.getPosition());
 
 }
 
@@ -49,6 +55,12 @@ void GameState::render()
 	{
 		window->draw(*pBull[i]);
 	}
+
+	for (int i = 0; i < eBull.size(); i++)
+	{
+		window->draw(*eBull[i]);
+	}
+
 
 	window->display();
 }
@@ -73,6 +85,7 @@ void GameState::initalizePlayer() {
     user.setTexture(playerTexture[0]);
     user.setScale(sf::Vector2f(2.f, 2.f));
 	user.setOrigin(user.getTextureRect().width/2, user.getTextureRect().height/2);
+
 }
 
 

@@ -157,6 +157,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Gun.cpp" />
+    <ClCompile Include="Gun2.cpp" />
     <ClCompile Include="Guy.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="Gun.h" />
+    <ClInclude Include="Gun2.h" />
     <ClInclude Include="Guy.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="Player.h" />

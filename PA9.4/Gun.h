@@ -12,20 +12,19 @@
 class Gun
 {
 public:
-	Gun() = default;
+	Gun() { speed = 1; damage = 1; }
 	~Gun() = default;
-
-
+	
 	virtual bool fireBullet(const sf::Vector2f& newPosition, const sf::Vector2f& newTarget,
 		 vector<Bullet*> &pBull);
 	//virtual Bullet* fireEBullet(const sf::Vector2f& newPosition, const sf::Vector2f& newTarget);
 	//overridden for 
+	
 
-
-private:
-
-	sf::Clock clock; //time since last fire, for pBull
-
+	
+protected:
+	float speed;
+	int damage;
 
 
 };

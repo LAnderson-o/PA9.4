@@ -8,8 +8,13 @@ public:
 	~Enemies();
 
 	void spawnEnemy(sf:: RenderWindow* window);
+
 	void despawnEnemy();
-	void update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt, vector<Bullet*>& pBull);
+	//despawn condition and event (score etc)
+	void update(sf::RenderWindow* window, sf::FloatRect bounds,
+		float& dt, vector<Bullet*>& pBull, 
+		vector<Bullet*>& eBull, Vector2f pPos);
+	//fires gun and moves enemies
 	void render(sf::RenderWindow* window);
 
 private:

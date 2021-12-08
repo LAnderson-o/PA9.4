@@ -62,6 +62,20 @@ void Player::update(sf::FloatRect& bounds, vector<Bullet*>& pBull, sf::RenderWin
 
 bool Player::firegun(sf::RenderWindow* nWindow, vector<Bullet*>& pBull)
 {
-	return pGun.fireBullet(this->getPosition(), nWindow->mapPixelToCoords(Mouse::getPosition(*nWindow)), pBull);
 
+	clock.getElapsedTime();
+
+	if (clock.getElapsedTime().asMilliseconds() > 300)
+	{
+		clock.restart();
+		return pGun->fireBullet(this->getPosition(), nWindow->mapPixelToCoords(Mouse::getPosition(*nWindow)), pBull);
+		
+	}
+	
+}
+
+void Player::upgrade()
+{
+	delete pGun;
+	pGun = new Gun2();
 }

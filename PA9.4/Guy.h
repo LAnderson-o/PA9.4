@@ -1,6 +1,6 @@
 #pragma once
 #include "Header.h"
-#include "Gun.h"
+#include "Gun2.h"
 
 	//plant to inherat from this to create "player" and "enemy" class 
 	//will contain life, points on death, could have other stuff
@@ -20,15 +20,17 @@ public:
 	~Guy() = default;
 
 
-	//??any point to inheratance when we dont use "player guns"?
-	virtual bool firegun(sf::RenderWindow* nWindow, vector<Bullet*>& pBull); //will need to change work with passed position 
+	virtual bool firegun(sf::RenderWindow* nWindow, vector<Bullet*>& pBull) {
+		return false;
+	}; //will need to change work with passed position 
 
 
 
 protected:
-	sf::Clock clock;
-
-	Gun pGun;
+	sf::Clock clock; //foor calcing gun timing
+	int life; //for life total
+	Gun* pGun;
+	int speed; //pixels per second to move
 };
 
 

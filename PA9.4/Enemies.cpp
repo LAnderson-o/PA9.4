@@ -26,8 +26,8 @@ void Enemies::spawnEnemy(sf::RenderWindow* window) {
 	goal.y = (rand() % window->getSize().y);
 
 	
-
-	Enemy* enemy1 = new Enemy(enemyid, pos, goal);
+	int dam = 1;
+	Enemy* enemy1 = new Enemy(enemyid, pos, goal, dam);
 	enemyid++;
 
 
@@ -40,14 +40,19 @@ void Enemies::despawnEnemy() {
 	
 }
 
-void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt, vector<Bullet*>& pBull) {
+void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt, 
+	vector<Bullet*>& pBull, vector<Bullet*>& eBull, Vector2f pPos)
+{
 	
 	//loop through all enemies check if bullet intersects enemy or enemy intersects player
 	for (int i = 0; i < enemyList.size(); ++i) {
 		enemyList[i]->movement(window, bounds, dt);
+		enemyList[i]->firegun(eBull, pPos);
 		for (int j = 0; j < pBull.size(); ++j) {
-			if (enemyList[i]->getTextureRect().intersects(pBull[j]->getTextureRect())) {
+			if (enemyList[i]->getGlobalBounds().intersects(pBull[j]->getGlobalBounds())) {
+				delete enemyList[i];
 				enemyList.erase(enemyList.begin()+i);
+				break;
 			}
 		}
 		

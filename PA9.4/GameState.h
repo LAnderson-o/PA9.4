@@ -41,7 +41,7 @@ private:
 
     //may make BulletManager class that contains these and manages them
     vector<Bullet*> pBull; //vector of player bullets
-    //vector<Bullet> eBull; //vector of enemy bullets
+    vector<Bullet*> eBull; //vector of enemy bullets
 
 
     //vector<sf::Texture> tex; //textures
