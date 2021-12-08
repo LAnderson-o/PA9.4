@@ -62,9 +62,8 @@ void Enemy::movement(sf::RenderWindow* window, sf::FloatRect bounds, float &dt)
 bool Enemy::firegun(vector<Bullet*>& eBull, Vector2f& target)
 {
 	
-	if (clock.getElapsedTime().asMilliseconds() > shotTime)
+	if (clock.getElapsedTime().asMilliseconds() > shotTime && clock.getElapsedTime().asSeconds() > 2)
 	{
-		srand(getPosition().x);
 		shotTime = rand() % 10000;
 		clock.restart();
 
