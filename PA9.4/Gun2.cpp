@@ -23,6 +23,7 @@ bool Gun2::fireBullet(const sf::Vector2f& newPosition, const sf::Vector2f& newTa
 		test*speed, damage);
 	pBull.push_back(nBul);
 
+	//add radians to change angle of shotgun bullets
 	float n1l = n1 + .08;
 	float n1r = n1 - .08;
 
@@ -36,7 +37,7 @@ bool Gun2::fireBullet(const sf::Vector2f& newPosition, const sf::Vector2f& newTa
 	Vector2f r;
 	r.x = -test.y*10;
 	r.y = test.x*10;
-
+	//create small vector perpendicular to bullet direction to add to spawn location
 	nBul = new Bullet(6, sf::Color::White, newPosition + sf::Vector2f(-7, 0) + r,
 		test*speed, damage);
 
