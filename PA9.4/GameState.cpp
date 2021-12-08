@@ -4,13 +4,11 @@
 
 GameState::GameState(sf::RenderWindow* nWindow)
 {
-	
-
 	initalizeTextures();
 	initalizePlayer();
 	initalizeBackground();
-	bounds = background.getGlobalBounds();
 	initalizeText();
+	bounds = background.getGlobalBounds();
 	this->window = nWindow;
 }
 
