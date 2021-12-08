@@ -110,10 +110,9 @@ void GameState::initalizeTextures() {
 	backgroundTexture.loadFromFile("Background.png");
 }
 
-
-void GameState::updateBul(float& dt)
+void GameState::initalizeMenu()
 {
-	return;
+	 Menu menu(window->getSize().x, window->getSize().y);
 }
 
 void GameState::initalizePlayer() {
