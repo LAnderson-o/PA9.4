@@ -1,20 +1,16 @@
 #include "Game.h"
 
 Game::Game() {
-	initalizeVars();
-	initalizeWindow();
+    initalizeVars();
+    initalizeWindow();
 
     mainGame = new GameState(window);
 
 }
 
 Game::~Game() {
-	delete window;
+    delete window;
 }
-
-
-
-
 
 
 void Game::updatedt()
@@ -22,11 +18,11 @@ void Game::updatedt()
     dt = dClock.restart().asSeconds();
 }
 
-void Game::update() 
+void Game::update()
 {
     mainGame->update(dt);
-    
-    
+
+
     //event polling, might need something else
     while (window->pollEvent(event)) {
         switch (event.type) {
@@ -45,21 +41,21 @@ void Game::update()
     updatedt();
 }
 
-        
+
 
 
 void Game::render()
-    {
-        
-        //draw 
-        mainGame->render();
-       
-    }
+{
+
+    //draw 
+    mainGame->render();
+
+}
 
 void Game::run() {
     while (window->isOpen()) {
         update();
-        
+
 
         render();
     }
@@ -67,12 +63,12 @@ void Game::run() {
 
 
 void Game::initalizeVars() {
-	window = nullptr;
+    window = nullptr;
 }
 
 
 
 void Game::initalizeWindow() {
-	window = new sf::RenderWindow(sf::VideoMode(640, 480), "PA9", sf::Style::Default);//change window size here
+    window = new sf::RenderWindow(sf::VideoMode(640, 480), "PA9", sf::Style::Default);//change window size here
     window->setFramerateLimit(30);
 }
