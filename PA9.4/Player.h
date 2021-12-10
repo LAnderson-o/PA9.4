@@ -1,9 +1,12 @@
 #include "Guy.h"
+#include "bullet.h"
 
 class Player : public Guy {
 public:
 	Player(sf::RenderWindow* nWindow)
 	{
+		
+		firstShot = true;
 		life = 10; speed = 100;
 		pGun = new Gun();
 		window = nWindow;
@@ -18,6 +21,6 @@ public:
 
 	
 private:
-	
+	bool firstShot;
 	
 };

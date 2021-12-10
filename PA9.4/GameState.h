@@ -14,16 +14,17 @@
 class GameState
 {
 public:
+    GameState() = default; //for inheratance
     GameState(sf::RenderWindow* nWindow);
     ~GameState();
 
-    void update(float& dt);
-    void render();
+    virtual void update(float& dt);
+    virtual void render();
     
-    void gameOver();
+    virtual void gameOver();
 
 
-private:
+protected:
     int score;
 
 

@@ -64,8 +64,9 @@ bool Player::firegun(sf::RenderWindow* nWindow, vector<Bullet*>& pBull)
 
 	clock.getElapsedTime();
 
-	if (clock.getElapsedTime().asMilliseconds() > 300)
+	if (clock.getElapsedTime().asMilliseconds() > 300 || firstShot == true)
 	{
+		firstShot = false;
 		clock.restart();
 		return pGun->fireBullet(this->getPosition(), nWindow->mapPixelToCoords(Mouse::getPosition(*nWindow)), pBull);
 		

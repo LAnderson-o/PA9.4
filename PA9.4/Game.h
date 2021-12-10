@@ -6,7 +6,7 @@ class Game {
 public:
 	//constructors
 	Game();
-	virtual ~Game();
+	~Game();
 
 	//member funcs
 	void update();
@@ -15,8 +15,6 @@ public:
 	void updatedt();
 
 
-
-	sf::RectangleShape roads[3];
 
 private:
 
