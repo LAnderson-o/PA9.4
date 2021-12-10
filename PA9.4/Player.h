@@ -13,8 +13,8 @@ public:
 	}
 
 	void update(sf::FloatRect& bounds, 
-		vector<Bullet*>& pBull, sf::RenderWindow* window, float& dt);
-	bool firegun(sf::RenderWindow* nWindow, vector<Bullet*>& pBull);
+		vector<Bullet*>& pBull, float& dt);
+	bool firegun(Vector2f target, vector<Bullet*>& pBull);
 	void upgrade();
 	//upgread funciont should be called on certain score from GameState
 

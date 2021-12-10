@@ -24,7 +24,7 @@ GameState::~GameState()
 
 void GameState::update(float& dt)
 {
-	user->update(bounds, pBull, window, dt);
+	user->update(bounds, pBull, dt);
 
 	updateBul(dt);
 
@@ -44,6 +44,10 @@ void GameState::update(float& dt)
 	}
 	
 	enemies.update(bounds, dt, pBull, eBull, user->getPosition(), score);
+
+	//gameOver();
+
+	
 
 }
 
@@ -74,9 +78,6 @@ void GameState::updateBul(float& dt)
 		//player collision despawning
 		else if (user->getGlobalBounds().intersects(eBull[i]->getGlobalBounds())) {
 			user->setLife(user->getLife() - eBull[i]->getDam());//player damage
-			//if (user.getLife() <= 0) {
-			//	gameOver();
-			//}
 			delete eBull[i];
 			eBull.erase(eBull.begin() + i);
 			i--;
@@ -85,13 +86,14 @@ void GameState::updateBul(float& dt)
 
 
 
+
 }
 
 
 void GameState::render()
 {
-	if (lost == false) {
-		window->clear();
+
+	window->clear();
 
 
 
@@ -116,12 +118,6 @@ void GameState::render()
 
 
 		window->display();
-	}else if(lost == true){
-		window->clear(sf::Color::Black);
-		window->draw(gameovertext);
-		window->draw(scoreText);
-		window->display();
-	}
 }
 
 
@@ -162,15 +158,36 @@ void GameState::initalizeText() {
 	lifeText.setPosition(12, 30);
 	lifeText.setCharacterSize(18);
 
-	gameovertext.setFont(scoreFont);
-	gameovertext.setPosition(240, 240);
-	gameovertext.setFillColor(sf::Color::White);
-	gameovertext.setCharacterSize(32);
-	gameovertext.setString("Game Over");
 
 }
 
-void GameState::gameOver() {
-	scoreText.setPosition(320-scoreText.getGlobalBounds().width/2, 280);
-	lost = true;
+bool GameState::gameOver() {
+	if (user->getLife() <= 0) {
+
+		Clock gm;
+		gm.getElapsedTime();
+
+
+		gameovertext.setFont(scoreFont);
+		gameovertext.setPosition(240, 240);
+		gameovertext.setFillColor(sf::Color::White);
+		gameovertext.setCharacterSize(32);
+		gameovertext.setString("Game Over");
+		scoreText.setPosition(320 - scoreText.getGlobalBounds().width / 2, 280);
+		lost = true;
+		//doesnt work too well
+		while (gm.getElapsedTime().asSeconds() < 2)
+		{
+
+			window->clear(sf::Color::Black);
+			window->draw(gameovertext);
+			window->draw(scoreText);
+			window->display();
+
+		}
+		
+		 //could change condition later
+		
+	}
+	return lost;
 }

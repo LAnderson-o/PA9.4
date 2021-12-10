@@ -19,15 +19,9 @@ void Enemies::setWin(sf::RenderWindow* nWindow)
 	window = nWindow;
 }
 
-void Enemies::spawnEnemy() {
+void Enemies::spawnEnemy(Vector2f& pos,	Vector2f goal) {
 
-	Vector2f pos;
-	pos.x = (rand() % window->getSize().x);
-	pos.y = (rand() % window->getSize().y / 2);
 
-	Vector2f goal;
-	goal.x = (rand() % window->getSize().x);
-	goal.y = (rand() % window->getSize().y);
 
 
 	int dam = 1;
@@ -39,7 +33,8 @@ void Enemies::spawnEnemy() {
 
 }
 
-void Enemies::despawnEnemy() {
+void Enemies::despawnEnemy() 
+{
 
 }
 
@@ -54,7 +49,16 @@ void Enemies::update(sf::FloatRect bounds, float& dt,
 		{
 			spawnTime += -50;
 		}
-		spawnEnemy();
+		Vector2f pos;
+		pos.x = (rand() % window->getSize().x);
+		pos.y = (rand() % window->getSize().y / 2);
+
+		Vector2f goal;
+		goal.x = (rand() % window->getSize().x);
+		goal.y = (rand() % window->getSize().y);
+
+
+		spawnEnemy(pos, goal);
 	}
 
 

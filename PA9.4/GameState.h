@@ -16,12 +16,12 @@ class GameState
 public:
     GameState() = default; //for inheratance
     GameState(sf::RenderWindow* nWindow);
-    ~GameState();
+    virtual ~GameState();
 
     virtual void update(float& dt);
     virtual void render();
     
-    virtual void gameOver();
+    virtual bool gameOver();
 
 
 protected:

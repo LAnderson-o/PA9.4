@@ -4,8 +4,8 @@ Game::Game() {
     initalizeVars();
     initalizeWindow();
 
-    mainGame = new GameState(window);
-
+    //mainGame = new GameState(window);
+    mainGame = new TestState(window);
 }
 
 Game::~Game() {
@@ -55,12 +55,13 @@ void Game::render()
 }
 
 void Game::run() {
-    while (window->isOpen()) {
+    while (window->isOpen() && !mainGame->gameOver())
+    {
+       
         update();
-
-
         render();
     }
+
 }
 
 

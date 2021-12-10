@@ -10,7 +10,7 @@ public:
 
 	void setWin(sf::RenderWindow* nWindow);
 
-	void spawnEnemy();
+	void spawnEnemy(Vector2f& pos, Vector2f goal);
 	void despawnEnemy();
 	//despawn condition and event (score etc)
 	void update(sf::FloatRect bounds,

@@ -12,12 +12,15 @@ public:
 
 
 
+
     void update(float& dt);
-    
-    void gameOver(); //if fail will say then return delete self
+    void render();
+
+    bool gameOver(); //if fail will say then return delete self
 
 private:
-    Enemy* testEnemy; //see if despawns
 
+    Enemy* testEnemy; //see if despawns
+    bool shot;
 };
 

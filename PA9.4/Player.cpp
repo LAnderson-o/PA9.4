@@ -1,11 +1,11 @@
 #include "Player.h"
 
-void Player::update(sf::FloatRect& bounds, vector<Bullet*>& pBull, sf::RenderWindow* window, float& dt)
+void Player::update(sf::FloatRect& bounds, vector<Bullet*>& pBull, float& dt)
 {
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		firegun(window, pBull);
+		firegun(window->mapPixelToCoords(Mouse::getPosition(*window)), pBull);
 
 	}
 
@@ -59,7 +59,7 @@ void Player::update(sf::FloatRect& bounds, vector<Bullet*>& pBull, sf::RenderWin
 
 }
 
-bool Player::firegun(sf::RenderWindow* nWindow, vector<Bullet*>& pBull)
+bool Player::firegun(Vector2f target, vector<Bullet*>& pBull)
 {
 
 	clock.getElapsedTime();
@@ -68,7 +68,7 @@ bool Player::firegun(sf::RenderWindow* nWindow, vector<Bullet*>& pBull)
 	{
 		firstShot = false;
 		clock.restart();
-		return pGun->fireBullet(this->getPosition(), nWindow->mapPixelToCoords(Mouse::getPosition(*nWindow)), pBull);
+		return pGun->fireBullet(this->getPosition(), target, pBull);
 		
 	}
 	
