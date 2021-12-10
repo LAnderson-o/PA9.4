@@ -15,3 +15,8 @@ void Guy::setScore(int newScore) {
 int& Guy::getScore() {
 	return score;
 }
+
+void Guy::render()
+{
+	window->draw(*this);
+}

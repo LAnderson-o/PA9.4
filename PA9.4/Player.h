@@ -2,10 +2,11 @@
 
 class Player : public Guy {
 public:
-	Player() 
+	Player(sf::RenderWindow* nWindow)
 	{
 		life = 10; speed = 100;
 		pGun = new Gun2();
+		window = nWindow;
 	}
 
 	void update(sf::FloatRect& bounds, 

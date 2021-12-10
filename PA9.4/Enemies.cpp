@@ -50,7 +50,7 @@ void Enemies::update(sf::FloatRect bounds, float& dt,
 	if (clock.getElapsedTime().asMilliseconds() > rand() % spawnTime)
 	{
 		clock.restart();
-		if (spawnTime > 1000)
+		if (spawnTime > 1000) //sloly decrease spawn time
 		{
 			spawnTime += -50;
 		}

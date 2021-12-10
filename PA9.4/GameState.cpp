@@ -5,22 +5,47 @@
 GameState::GameState(sf::RenderWindow* nWindow)
 {
 	initalizeTextures();
-	initalizePlayer();
+	
 	initalizeBackground();
 	initalizeText();
 	bounds = background.getGlobalBounds();
 	this->window = nWindow;
+
+	initalizeEnemies();
+	initalizePlayer();
 }
 
 GameState::~GameState()
 {
+	//need to delete bullets 
+
 }
 
 void GameState::update(float& dt)
 {
-	user.update(bounds, pBull, window, dt);
+	user->update(bounds, pBull, window, dt);
+
+	updateBul(dt);
 
 	//update all bullets, will be its own function at some point
+	//score
+	string str = "Score: ";
+	str += std::to_string(user->getScore());
+	scoreText.setString(str);
+
+	//life
+	str = "Life: ";
+	str += std::to_string(user->getLife());
+	lifeText.setString(str);
+
+	
+	enemies.update(bounds, dt, pBull, eBull, user->getPosition(), user->getScore());
+
+}
+
+
+void GameState::updateBul(float& dt)
+{
 	for (int i = 0; i < pBull.size(); i++)
 	{
 		pBull[i]->move(pBull[i]->getVel().x * 200 * dt, pBull[i]->getVel().y * 200 * dt);
@@ -29,7 +54,7 @@ void GameState::update(float& dt)
 			delete pBull[i];
 			pBull.erase(pBull.begin() + i);
 			i--;
-		
+
 		}
 	}
 
@@ -43,9 +68,9 @@ void GameState::update(float& dt)
 			i--;
 		}
 		//player collision despawning
-		else if (user.getGlobalBounds().intersects(eBull[i]->getGlobalBounds())) {
-			user.setLife(user.getLife() - eBull[i]->getDam());//player damage
-			//if (user.getLife() <= 0) {
+		else if (user->getGlobalBounds().intersects(eBull[i]->getGlobalBounds())) {
+			user->setLife(user->getLife() - eBull[i]->getDam());//player damage
+			//if (user->getLife() <= 0) {
 			//	gameOver();
 			//}
 			delete eBull[i];
@@ -54,34 +79,24 @@ void GameState::update(float& dt)
 		}
 	}
 
-	//score
-	string str = "Score: ";
-	str += std::to_string(user.getScore());
-	scoreText.setString(str);
 
-	//life
-	str = "Life: ";
-	str += std::to_string(user.getLife());
-	lifeText.setString(str);
-
-	int randNum = rand() % 100;
-	if (randNum == 35) {
-		enemies.spawnEnemy(window);
-	}
-	enemies.update(window, bounds, dt, pBull, eBull, user.getPosition(), user.getScore());
 
 }
+
 
 void GameState::render()
 {
 
 	window->clear();
 
+
+
 	window->draw(background);
 	window->draw(scoreText);
 	window->draw(lifeText);
-	window->draw(user);
-	enemies.render(window);
+	user->render();
+
+	enemies.render();
 
 	//rendering bullets, should be own function
 	for (int i = 0; i < pBull.size(); i++)
@@ -110,17 +125,21 @@ void GameState::initalizeTextures() {
 	backgroundTexture.loadFromFile("Background.png");
 }
 
+
 void GameState::initalizePlayer() {
 	//will change to pointer
-	user.setPosition(400, 100);
-	user.setTexture(playerTexture);
-	user.setScale(sf::Vector2f(2.f, 2.f));
-	user.setOrigin(user.getTextureRect().width / 2, user.getTextureRect().height / 2);
+	user = new Player(window);
+
+
+	user->setPosition(window->getSize().x/2, window->getSize().y/2);
+	user->setTexture(playerTexture);
+	user->setScale(sf::Vector2f(2.f, 2.f));
+	user->setOrigin(user->getTextureRect().width / 2, user->getTextureRect().height / 2);
 }
 
 
 void GameState::initalizeEnemies() {
-
+	enemies.setWin(window);
 }
 
 void GameState::initalizeText() {

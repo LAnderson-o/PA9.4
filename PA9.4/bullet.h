@@ -3,7 +3,7 @@
 
 
 class Bullet :
-	public sf::CircleShape //figure out how to apply texture
+	public sf::CircleShape //to do: figure out how to apply texture
 {
 public:
 	Bullet(const double& newRadius, const sf::Color& newColor,

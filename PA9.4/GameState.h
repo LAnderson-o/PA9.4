@@ -26,6 +26,7 @@ public:
 private:
     
 
+
     void updateBul(float& dt);
 
     
@@ -47,7 +48,7 @@ private:
     sf::Text gameovertext;
     
     Enemies enemies;
-    Player user;
+    Player* user;
     sf::Sprite background;
 
 

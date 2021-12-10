@@ -20,7 +20,7 @@ public:
 	~Guy() = default;
 
 
-	virtual bool firegun(sf::RenderWindow* nWindow, vector<Bullet*>& pBull) {
+	virtual bool firegun(vector<Bullet*>& pBull) {
 		return false;
 	}; //will need to change work with passed position 
 
@@ -29,9 +29,10 @@ public:
 
 	void setScore(int newScore);
 	int& getScore();
-
+	void render();
 
 protected:
+	sf::RenderWindow* window;
 	sf::Clock clock; //foor calcing gun timing
 	int life; //for life total
 	int score;
