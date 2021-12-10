@@ -101,6 +101,7 @@ void GameState::render()
 	}else if(lost == true){
 		window->clear(sf::Color::Black);
 		window->draw(gameovertext);
+		window->draw(scoreText);
 		window->display();
 	}
 }
@@ -140,7 +141,7 @@ void GameState::initalizeText() {
 	lifeText.setCharacterSize(18);
 
 	gameovertext.setFont(scoreFont);
-	gameovertext.setPosition(320, 240);
+	gameovertext.setPosition(240, 240);
 	gameovertext.setFillColor(sf::Color::White);
 	gameovertext.setCharacterSize(32);
 	gameovertext.setString("Game Over");
@@ -148,5 +149,6 @@ void GameState::initalizeText() {
 }
 
 void GameState::gameOver() {
+	scoreText.setPosition(320-scoreText.getGlobalBounds().width/2, 280);
 	lost = true;
 }
