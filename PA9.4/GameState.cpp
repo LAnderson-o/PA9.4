@@ -31,16 +31,19 @@ void GameState::update(float& dt)
 	//update all bullets, will be its own function at some point
 	//score
 	string str = "Score: ";
-	str += std::to_string(user->getScore());
+	str += std::to_string(score);
 	scoreText.setString(str);
 
 	//life
 	str = "Life: ";
 	str += std::to_string(user->getLife());
 	lifeText.setString(str);
-
+	if (score == 10)
+	{
+		user->upgrade();
+	}
 	
-	enemies.update(bounds, dt, pBull, eBull, user->getPosition(), user->getScore());
+	enemies.update(bounds, dt, pBull, eBull, user->getPosition(), score);
 
 }
 
@@ -69,8 +72,8 @@ void GameState::updateBul(float& dt)
 			i--;
 		}
 		//player collision despawning
-		else if (user.getGlobalBounds().intersects(eBull[i]->getGlobalBounds())) {
-			user.setLife(user.getLife() - eBull[i]->getDam());//player damage
+		else if (user->getGlobalBounds().intersects(eBull[i]->getGlobalBounds())) {
+			user->setLife(user->getLife() - eBull[i]->getDam());//player damage
 			//if (user.getLife() <= 0) {
 			//	gameOver();
 			//}

@@ -24,7 +24,7 @@ public:
 
 
 private:
-    
+    int score;
 
 
     void updateBul(float& dt);

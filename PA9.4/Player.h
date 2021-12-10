@@ -5,7 +5,7 @@ public:
 	Player(sf::RenderWindow* nWindow)
 	{
 		life = 10; speed = 100;
-		pGun = new Gun2();
+		pGun = new Gun();
 		window = nWindow;
 	}
 
