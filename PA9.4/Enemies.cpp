@@ -1,21 +1,25 @@
 #include "Enemies.h"
 
-Enemies::Enemies() {
+Enemies::Enemies() 
+{
 	enemyTexture.loadFromFile("flytransparent.png");
-	enemyid = 0;
+	spawnTime = 3000;
 }
 
 Enemies::~Enemies()
 {
-
 	for (auto j : enemyList)
 	{
 		delete j;
 	}
-
 }
 
-void Enemies::spawnEnemy(sf::RenderWindow* window) {
+void Enemies::setWin(sf::RenderWindow* nWindow)
+{
+	window = nWindow;
+}
+
+void Enemies::spawnEnemy() {
 
 	Vector2f pos;
 	pos.x = (rand() % window->getSize().x);
@@ -27,9 +31,8 @@ void Enemies::spawnEnemy(sf::RenderWindow* window) {
 
 
 	int dam = 1;
-	Enemy* enemy1 = new Enemy(enemyid, pos, goal, dam);
-	enemyid++;
-
+	Enemy* enemy1 = new Enemy(window, pos, goal, dam);
+	
 
 	enemy1->setTexture(enemyTexture);
 	enemyList.push_back(enemy1);
@@ -40,28 +43,41 @@ void Enemies::despawnEnemy() {
 
 }
 
-void Enemies::update(sf::RenderWindow* window, sf::FloatRect bounds, float& dt,
+void Enemies::update(sf::FloatRect bounds, float& dt,
 	vector<Bullet*>& pBull, vector<Bullet*>& eBull, Vector2f pPos, int& score)
 {
+	//spawn enemy condition
+	if (clock.getElapsedTime().asMilliseconds() > rand() % spawnTime)
+	{
+		clock.restart();
+		if (spawnTime > 1000)
+		{
+			spawnTime += -50;
+		}
+		spawnEnemy();
+	}
+
+
 
 	//loop through all enemies check if bullet intersects enemy or enemy intersects player
 	for (int i = 0; i < enemyList.size(); ++i) {
-		enemyList[i]->movement(window, bounds, dt);
+		enemyList[i]->movement(dt);
 		enemyList[i]->firegun(eBull, pPos);
 		for (int j = 0; j < pBull.size(); ++j) {
 			if (enemyList[i]->getGlobalBounds().intersects(pBull[j]->getGlobalBounds())) {
-				score++;
+				score++; //updates game score
 				delete enemyList[i];
 				enemyList.erase(enemyList.begin() + i);
-				break;
+				break; //tinker with this alter
 			}
 		}
 	}
 
 }
 
-void Enemies::render(sf::RenderWindow* window) {
+void Enemies::render() {
 	for (auto j : enemyList) {
-		window->draw(*j);
+
+		j->render();
 	}
 }

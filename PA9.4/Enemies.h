@@ -2,28 +2,33 @@
 #include "Header.h"
 #include "Enemy.h"
 
+//enemy manager class
 class Enemies {
 public:
 	Enemies();
 	~Enemies();
 
-	void spawnEnemy(sf::RenderWindow* window);
+	void setWin(sf::RenderWindow* nWindow);
 
+	void spawnEnemy();
 	void despawnEnemy();
 	//despawn condition and event (score etc)
-	void update(sf::RenderWindow* window, sf::FloatRect bounds,
+	void update(sf::FloatRect bounds,
 		float& dt, vector<Bullet*>& pBull,
 		vector<Bullet*>& eBull, Vector2f pPos, int& score);
 	//fires gun and moves enemies
-	void render(sf::RenderWindow* window);
-
+	void render();
+	//renders all enemies to screen
 private:
 
-	std::vector<Enemy*> enemyList;
+	unsigned int spawnTime; //ms until next spawn
+	Clock clock;
+
 
 	sf::Texture enemyTexture;
-
-
-	int enemyid;
+	
+	sf::RenderWindow* window; //window to interact with
+	
+	std::vector<Enemy*> enemyList;
 
 };

@@ -1,15 +1,14 @@
 #include "Enemy.h"
 
 
-Enemy::Enemy(int newID, Vector2f& pos, Vector2f& nGoal, int& nLife)
+Enemy::Enemy(sf::RenderWindow* nWindow, Vector2f& pos, Vector2f& nGoal, int& nLife)
 {
-	
+	window = nWindow;
 	shotTime = rand() % 10000;
 
 	
 	life = nLife;
 	speed = 150;
-	id = newID;
 	goal = nGoal;
 	
 
@@ -34,7 +33,7 @@ Enemy::Enemy(int newID, Vector2f& pos, Vector2f& nGoal, int& nLife)
 	pGun = new Gun();
 }
 
-void Enemy::movement(sf::RenderWindow* window, sf::FloatRect bounds, float &dt)
+void Enemy::movement(float &dt)
 {
 	
 	if ((this->getPosition() - goal).x > 0 && (this->getPosition() - goal).x < 10) //when fly is 'at' goal pos
@@ -79,9 +78,3 @@ bool Enemy::firegun(vector<Bullet*>& eBull, Vector2f& target)
 
 }
 
-
-
-void Enemy::setID(int newID)
-{
-	id = newID;
-}
