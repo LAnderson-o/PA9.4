@@ -2,6 +2,18 @@
 
 
 
+GameState::GameState()
+{
+	initalizeTextures();
+
+	initalizeBackground();
+	initalizeText();
+	bounds = background.getGlobalBounds();
+	lost = false;
+
+	
+}
+
 GameState::GameState(sf::RenderWindow* nWindow)
 {
 	initalizeTextures();
@@ -10,6 +22,7 @@ GameState::GameState(sf::RenderWindow* nWindow)
 	initalizeText();
 	bounds = background.getGlobalBounds();
 	lost = false;
+	start = false;
 	this->window = nWindow;
 
 	initalizeEnemies();
@@ -20,6 +33,9 @@ GameState::~GameState()
 {
 	//need to delete bullets 
 
+
+
+	
 }
 
 void GameState::update(float& dt)
@@ -45,8 +61,7 @@ void GameState::update(float& dt)
 	
 	enemies.update(bounds, dt, pBull, eBull, user->getPosition(), score);
 
-	//gameOver();
-
+	
 	
 
 }
@@ -78,6 +93,9 @@ void GameState::updateBul(float& dt)
 		//player collision despawning
 		else if (user->getGlobalBounds().intersects(eBull[i]->getGlobalBounds())) {
 			user->setLife(user->getLife() - eBull[i]->getDam());//player damage
+			gameOver();
+
+			
 			delete eBull[i];
 			eBull.erase(eBull.begin() + i);
 			i--;
@@ -164,8 +182,8 @@ void GameState::initalizeText() {
 bool GameState::gameOver() {
 	if (user->getLife() <= 0) {
 
-		Clock gm;
-		gm.getElapsedTime();
+		/*Clock gm;
+		gm.getElapsedTime();*/
 
 
 		gameovertext.setFont(scoreFont);
@@ -176,7 +194,7 @@ bool GameState::gameOver() {
 		scoreText.setPosition(320 - scoreText.getGlobalBounds().width / 2, 280);
 		lost = true;
 		//doesnt work too well
-		while (gm.getElapsedTime().asSeconds() < 2)
+		while (window->isOpen())
 		{
 
 			window->clear(sf::Color::Black);

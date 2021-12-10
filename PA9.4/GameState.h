@@ -12,9 +12,9 @@
 //#include "Enemy.h"
 
 class GameState
-{
+{  
 public:
-    GameState() = default; //for inheratance
+    GameState(); //for inheratance
     GameState(sf::RenderWindow* nWindow);
     virtual ~GameState();
 
@@ -26,7 +26,8 @@ public:
 
 protected:
     int score;
-
+    
+    bool start;
 
     void updateBul(float& dt);
 

@@ -5,7 +5,7 @@ Game::Game() {
     initalizeWindow();
 
     //mainGame = new GameState(window);
-    mainGame = new TestState(window);
+    mainGame = new TestState1(window);
 }
 
 Game::~Game() {
@@ -55,7 +55,7 @@ void Game::render()
 }
 
 void Game::run() {
-    while (window->isOpen() && !mainGame->gameOver())
+    while (window->isOpen())
     {
        
         update();
