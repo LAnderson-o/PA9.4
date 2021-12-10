@@ -46,6 +46,7 @@ private:
     sf::Text scoreText;
     sf::Text lifeText;
     sf::Text gameovertext;
+    bool lost;
     
     Enemies enemies;
     Player* user;
