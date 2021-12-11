@@ -22,7 +22,7 @@ public:
     virtual void render();
     
     virtual bool gameOver();
-
+    void tutor();
 
 protected:
     int score;
@@ -48,6 +48,7 @@ protected:
     sf::Text scoreText;
     sf::Text lifeText;
     sf::Text gameovertext;
+    sf::Text tutortext;
     bool lost;
     
     Enemies* enemies;

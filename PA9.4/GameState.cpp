@@ -118,6 +118,38 @@ void GameState::updateBul(float& dt)
 }
 
 
+void GameState::tutor()
+{
+
+	tutortext.setFont(scoreFont);
+	tutortext.setPosition(window->getSize().x / 10, window->getSize().y / 2 - 30);
+	tutortext.setFillColor(sf::Color::White);
+	tutortext.setCharacterSize(25);
+	tutortext.setString("Directions: WASD to move, Space to shoot\navoid enemy bullets, Enter to start");
+	
+	
+	//doesnt work too well
+	while (window->isOpen())
+	{
+
+		window->clear(sf::Color::Black);
+		window->draw(tutortext);
+		window->draw(tutortext);
+		window->display();
+
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+		{
+			break;
+		}
+	}
+
+
+
+
+}
+
+
 void GameState::render()
 {
 

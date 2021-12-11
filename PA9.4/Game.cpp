@@ -5,7 +5,7 @@ Game::Game() {
     initalizeWindow();
 
     //mainGame = new GameState(window); 
-    mainGame = new TestState5(window);
+    mainGame = new GameState(window);
 }
 
 Game::~Game() {
@@ -17,6 +17,7 @@ void Game::updatedt()
 {
     dt = dClock.restart().asSeconds();
 }
+
 
 void Game::update()
 {
@@ -55,6 +56,8 @@ void Game::render()
 }
 
 void Game::run() {
+
+    mainGame->tutor();
     while (window->isOpen())
     {
        
