@@ -104,9 +104,6 @@
     <ClInclude Include="Gun2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TestState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
