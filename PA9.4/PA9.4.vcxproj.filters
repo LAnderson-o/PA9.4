@@ -45,9 +45,6 @@
     <ClCompile Include="Gun2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TestState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

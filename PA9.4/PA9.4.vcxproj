@@ -161,7 +161,6 @@
     <ClCompile Include="Gun2.cpp" />
     <ClCompile Include="Guy.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TestState.cpp" />
     <ClCompile Include="TestState2.cpp" />
