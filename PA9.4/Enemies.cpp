@@ -95,3 +95,11 @@ void Enemies::render() {
 		j->render();
 	}
 }
+
+
+std::vector<Enemy*>* Enemies::getList()
+{
+
+
+	return &enemyList;
+}

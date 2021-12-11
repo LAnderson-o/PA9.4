@@ -8,7 +8,7 @@ TestState1::TestState1(sf::RenderWindow* nWindow)
 
 	this->window = nWindow;
 
-	
+
 	initalizePlayer();
 	shot = false;
 
@@ -116,11 +116,14 @@ bool TestState1::gameOver()
 
 void TestState1::initalizeEnemy()
 {
-	Vector2f temp(window->getSize().x, window->getSize().y / 3);
+	Vector2f temp(window->getSize().x / 10, window->getSize().y / 10);
 	int l = 3;
 
 	enemyTexture.loadFromFile("flytransparent.png");
 
 	testEnemy = new Enemy(window, temp, temp, l);
 	testEnemy->setTexture(enemyTexture);
+
+
+
 }

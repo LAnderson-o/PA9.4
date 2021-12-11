@@ -16,7 +16,7 @@ class GameState
 public:
     GameState(); //for inheratance
     GameState(sf::RenderWindow* nWindow);
-    virtual ~GameState();
+    ~GameState();
 
     virtual void update(float& dt);
     virtual void render();
@@ -29,11 +29,11 @@ protected:
     
     bool start;
 
-    void updateBul(float& dt);
+    virtual void updateBul(float& dt);
 
     
     void initalizePlayer();
-    void initalizeEnemies();
+    virtual void initalizeEnemies();
     void initalizeBackground();
     void initalizeTextures();
     void initalizeText();
@@ -50,7 +50,7 @@ protected:
     sf::Text gameovertext;
     bool lost;
     
-    Enemies enemies;
+    Enemies* enemies;
     Player* user;
     sf::Sprite background;
 

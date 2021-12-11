@@ -13,13 +13,14 @@ public:
 	void spawnEnemy(Vector2f& pos, Vector2f goal);
 	void despawnEnemy();
 	//despawn condition and event (score etc)
-	void update(sf::FloatRect bounds,
+	virtual void update(sf::FloatRect bounds,
 		float& dt, vector<Bullet*>& pBull,
 		vector<Bullet*>& eBull, Vector2f pPos, int& score);
 	//fires gun and moves enemies
 	void render();
+	std::vector<Enemy*>* getList();
 	//renders all enemies to screen
-private:
+protected:
 
 	unsigned int spawnTime; //ms until next spawn
 	Clock clock;

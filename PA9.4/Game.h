@@ -1,6 +1,10 @@
 #pragma once
 
 #include "TestState.h"
+#include "TestState2.h"
+#include "TestState3.h"
+#include "TestState4.h"
+#include "TestState5.h"
 #include "GameState.h"
 #include "Game.h"
 

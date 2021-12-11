@@ -11,13 +11,14 @@ GameState::GameState()
 	bounds = background.getGlobalBounds();
 	lost = false;
 
-	
 }
 
 GameState::GameState(sf::RenderWindow* nWindow)
 {
 	initalizeTextures();
+
 	
+
 	initalizeBackground();
 	initalizeText();
 	bounds = background.getGlobalBounds();
@@ -31,9 +32,18 @@ GameState::GameState(sf::RenderWindow* nWindow)
 
 GameState::~GameState()
 {
+	delete user;
+	delete enemies;
+	
 	//need to delete bullets 
-
-
+	for (auto j : eBull)
+	{
+		delete j;
+	}
+	for (auto j : pBull)
+	{
+		delete j;
+	}
 
 	
 }
@@ -59,7 +69,7 @@ void GameState::update(float& dt)
 		user->upgrade();
 	}
 	
-	enemies.update(bounds, dt, pBull, eBull, user->getPosition(), score);
+	enemies->update(bounds, dt, pBull, eBull, user->getPosition(), score);
 
 	
 	
@@ -120,7 +130,7 @@ void GameState::render()
 	window->draw(lifeText);
 	user->render();
 
-	enemies.render();
+	enemies->render();
 
 		//rendering bullets, should be own function
 		for (int i = 0; i < pBull.size(); i++)
@@ -163,7 +173,9 @@ void GameState::initalizePlayer() {
 
 
 void GameState::initalizeEnemies() {
-	enemies.setWin(window);
+	enemies = new Enemies();
+	enemies->setWin(window);
+
 }
 
 void GameState::initalizeText() {

@@ -4,8 +4,8 @@ Game::Game() {
     initalizeVars();
     initalizeWindow();
 
-    //mainGame = new GameState(window);
-    mainGame = new TestState1(window);
+    //mainGame = new GameState(window); 
+    mainGame = new TestState5(window);
 }
 
 Game::~Game() {

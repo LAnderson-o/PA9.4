@@ -1,14 +1,15 @@
 #pragma once
 #include "GameState.h"
+#include "EnemiesTest.h"
 #include "Header.h"
-//test if player bullet despawns enemy
+//test if score updates
 
-class TestState1 :
+class TestState3 :
     public GameState
 {
 public:
-    TestState1(sf::RenderWindow* nWindow);
-    ~TestState1();
+    TestState3(sf::RenderWindow* nWindow);
+    ~TestState3();
 
 
 
@@ -19,14 +20,11 @@ public:
     bool gameOver(); //if fail will say then return delete self
 
 private:
+    virtual void updateBul(float& dt);
 
-    sf::Texture enemyTexture;
-
-
-    void initalizeEnemy();
+    void initalizeEnemies();
 
 
-    Enemy* testEnemy; //see if despawns
     bool shot;
 };
 

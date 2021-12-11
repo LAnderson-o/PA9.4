@@ -1,14 +1,14 @@
 #pragma once
 #include "GameState.h"
-#include "Header.h"
-//test if player bullet despawns enemy
+//test if bullet decreases life
 
-class TestState1 :
+class TestState2 :
     public GameState
 {
+
 public:
-    TestState1(sf::RenderWindow* nWindow);
-    ~TestState1();
+    TestState2(sf::RenderWindow* nWindow);
+    ~TestState2();
 
 
 
@@ -28,5 +28,7 @@ private:
 
     Enemy* testEnemy; //see if despawns
     bool shot;
+
+
 };
 
