@@ -180,7 +180,6 @@
     <ClInclude Include="Gun2.h" />
     <ClInclude Include="Guy.h" />
     <ClInclude Include="Header.h" />
-    <ClInclude Include="Menu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TemplateLinkedList.h" />
     <ClInclude Include="TemplateNode.h" />

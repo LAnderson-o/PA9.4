@@ -238,8 +238,24 @@ bool GameState::gameOver() {
 		scoreText.setPosition(320 - scoreText.getGlobalBounds().width / 2, 280);
 		lost = true;
 		//doesnt work too well
+		sf::Event eve;
 		while (window->isOpen())
 		{
+
+			while (window->pollEvent(eve)) {
+				switch (eve.type) {
+				case sf::Event::Closed:
+
+					window->close();
+					break;
+				case sf::Event::KeyPressed:
+					if (eve.key.code == sf::Keyboard::Escape) {
+						window->close();
+					}
+					break;
+				}
+			}
+
 
 			window->clear(sf::Color::Black);
 			window->draw(gameovertext);
